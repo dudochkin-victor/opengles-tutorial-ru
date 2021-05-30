@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Предисловие - Rust OpenGL ES tutorial</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="preface.html">Предисловие</a></li><li class="chapter-item expanded "><a href="v2/intro.html"><strong aria-hidden="true">1.</strong> OpenGL ES 2.0</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="v2/00-setup.html"><strong aria-hidden="true">1.1.</strong> С нуля</a></li><li class="chapter-item expanded "><a href="v2/01-window.html"><strong aria-hidden="true">1.2.</strong> Cоздание окна</a></li><li class="chapter-item expanded "><a href="v2/02-opengles-context.html"><strong aria-hidden="true">1.3.</strong> OpenGL контекст</a></li><li class="chapter-item expanded "><a href="v2/03-compiling-shaders.html"><strong aria-hidden="true">1.4.</strong> Компиляция шейдеров</a></li><li class="chapter-item expanded "><a href="v2/04-triangle.html"><strong aria-hidden="true">1.5.</strong> Треугольник</a></li><li class="chapter-item expanded "><a href="v2/05-triangle-colors.html"><strong aria-hidden="true">1.6.</strong> Цветной треугольник</a></li><li class="chapter-item expanded "><a href="v2/06-gl-generator.html"><strong aria-hidden="true">1.7.</strong> GL генератор</a></li><li class="chapter-item expanded "><a href="v2/07-basic-resources.html"><strong aria-hidden="true">1.8.</strong> Основные ресурсы</a></li><li class="chapter-item expanded "><a href="v2/08-failure.html"><strong aria-hidden="true">1.9.</strong> Использование библиотеки Failure</a></li><li class="chapter-item expanded "><a href="v2/09-vertex-attribute-format.html"><strong aria-hidden="true">1.10.</strong> Формат аттрибутов вершин</a></li><li class="chapter-item expanded "><a href="v2/10-procedural-macros.html"><strong aria-hidden="true">1.11.</strong> Процедурные макросы</a></li><li class="chapter-item expanded "><a href="v2/11-vertex-data-types.html"><strong aria-hidden="true">1.12.</strong> Типы данных вершин</a></li><li class="chapter-item expanded "><a href="v2/12-buffers.html"><strong aria-hidden="true">1.13.</strong> Буферы</a></li><li class="chapter-item expanded "><a href="v2/13-safe-triangle-nalgebra.html"><strong aria-hidden="true">1.14.</strong> Треугольник и преобразования</a></li></ol></li><li class="chapter-item expanded "><a href="v2/intro.html"><strong aria-hidden="true">2.</strong> OpenGL ES 3.0</a></li><li class="chapter-item expanded "><a href="shaders/intro.html"><strong aria-hidden="true">3.</strong> Шэйдеры GLSL</a></li><li class="chapter-item expanded affix "><a href="conclusion.html">Заключение</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Rust OpenGL ES tutorial</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#Предисловие" id="Предисловие">Предисловие</a></h1>
+<h2><a class="header" href="#Об-Авторе" id="Об-Авторе">Об Авторе</a></h2>
+<p>Я специалист в области компьютерных технологий с 25+ летним опытом. В основном я занимаюсь программированием на всех востребованных рынком языках. </p>
+<p>Я начал программировать в 18. Увидев мой интерес к компьютерам, мои замечательные родители, купили мне ZX Spectrum. Вдоволь наигравшись в компьютерные игры, я понял что нужно что-то делать. И когда в одном из фильмов я увидел световое перо, у меня возникла идея собрать его самостоятельно. Ведь у меня начальное художественное образование. </p>
+<p><strong>Я попросил свою маму принести мне с работы фоторезистор.</strong></p>
+<p>И вот у меня в руках оптопара в металлическом корпусе... Но напильник решает все. И когда крышка элемента была сточена, осталось дело за кодом.
+Идея заключалась в том чтобы гонять по экрану телевизора точку, и слушать порт к которому была подключена оптопара.</p>
+<blockquote>
+<p>Первым языком я изучил Бэйсик. И первую программу я написал на нем.</p>
+</blockquote>
+<p>Но это была моя первая <strong>настоящая</strong> программа на Ассемблере. 
+Код работал идеально, но кто-же знал что <em>&quot;черный экран Электронной Лучевой Трубки испускает чрезмерное излучение для оптопары&quot;</em>.</p>
+<p><strong>Так я стал программистом и узнал что баги бывают не только в коде</strong></p>
+<p>Windows был очевидным выбором для хомячка в конце 90-х. Помните фильм &quot;Хакеры&quot; с Анджелиной Джоли. И если внимательно смотреть то можно увидеть консоль, SSH-сессию и всякое такое.</p>
+<p><strong>Вот вы в конце 90-х часто коннектились по SSH к удаленному серверу? Ну согласитесь же интересно?</strong></p>
+<p>Вообщем я поджал раздел файловой системы Windows и начал свой путь в Linux. Чего только я не перепробовал - RedHat, Fedora, Mandriva, Debian, FreeBSD, OpenBSD и другие, включая Solaris. Знакомство с UNIX кончилось инициативой - <strong>&quot;не загружать Windows в течении месяца, и потом принять решение&quot;</strong>.</p>
+<h3><a class="header" href="#Хватит-знакомится-пора-использовать-по-максимуму" id="Хватит-знакомится-пора-использовать-по-максимуму">Хватит знакомится, пора использовать по максимуму</a></h3>
+<p>Вообщем с 2004-го года у меня только Gentoo. Вот как поставил в 2004-м, так и работает.</p>
+<blockquote>
+<p>Gentoo - это про производительность.
+Когда ты из своего железа выжимаешь максимум, получая максимальную гибкость системы.</p>
+</blockquote>
+<p><strong>Когда появилась Nodejs - это было круто</strong></p>
+<p>Писать на одном языке и клиент и сервер, и при этом это серьезно превосходит по производительности все остальное. У меня были отличные проекты на Nodejs и Mysql, несколько сайтов, система морфологического анализа, я писал свои расширения для ноды (yandex-money...) и делал пулреквесты в существующие (libxmljs...). </p>
+<blockquote>
+<p>И это всё - тоже про производительность. Тебе не надо изучать несколько языков, пиши только на JavaScript.</p>
+</blockquote>
+<p><em>Что еще рассказать, историй хватит на небольшую книжку.</em></p>
+<h3><a class="header" href="#Мне-нравится-изучать-все-новое" id="Мне-нравится-изучать-все-новое">Мне нравится изучать все новое</a></h3>
+<ul>
+<li>
+<p>Однажды пришлось освоить разработку под Android (SDK+NDK), потом был iOS (ObjC/Swift), MacOSX (ObjC/Swift).</p>
+</li>
+<li>
+<p>Помню занимался Digital Signal Processing (DSP), нужно было речь человека превратить в мяукание.</p>
+</li>
+<li>
+<p>Занимался Natural Language Processing (NLP), портировал свой модуль морфологии с Nodejs на Golang.</p>
+</li>
+<li>
+<p>Хотел позаниматься SEO-оптимизацией контента. RAKE - хороший алгоритм, но перфекционизм взял свое и я посчитал TF/IDF всей Википедии на 6 языках.</p>
+<p>Когда считал TF/IDF, то возникли проблемы с памятью, Go не эффективно ее высвобождал. </p>
+</li>
+</ul>
+<p><strong>Поэтому я изучил Rust</strong> </p>
+<p>Я считаю этот язык одним из самых важных. Если представить его как язык для общения, то Rust - наверное один из самых выразительных языков в мире, такой же как Русский в контексте мировой литературы. </p>
+<p>Rust дает уверенность в качестве кода, при этом позволет получить максимальную производительность и стабильность в боевых условиях. Я не могу сказать что написав код на C/C++ вы создадите что-то хуже чем на Rust. Но я также не могу сказать, что вы сделаете это лучше.</p>
+<p>Сейчас в зону моих интересов также входит блокчейн, Deep Learning, OpenCL и Cuda.</p>
+<h2><a class="header" href="#Пожелания-от-автора" id="Пожелания-от-автора">Пожелания от автора</a></h2>
+<p>Надеюсь, что моя инициатива собрать опыт по оптимизации приложений, профилированию производительности и тестированию, будет вами воспринята как хорошая база для своих исследований и вы получите собственный опыт в создании приложений, которыми вы смогли бы гордится по прошествии времени. И вам будет что показать миру, кроме фиги.</p>
+<p>Спасибо вам огромное за прочтение этой книги. Надеюсь время которое Вы потратите не будет потрачено зря и вы получите удовольствие. Я же постараюсь сделать текст максимально читабельным и веселым, чтобы вы не скучали как при прочтении документации, чем вы обычно занимаетесь.</p>
+<p>Помимо этого я хотел бы надеятся на поддержку сообщества, потому как я не считаю это каким-то произведением искусства или чем-то личным, и любые коментарии и обсуждения будут восприняты очень доброжелательно. Этот труд скорее компиляция идей и опыта сообщества заинтересованных людей. </p>
+<p>Однако я всетаки оставляю за собой право модерировать этот репозиторий на <a href="https://github.com/dudochkin-victor/performance-profiling">github</a> и сообщество в <a href="https://www.reddit.com/r/performance_profiling">Reddit</a>.</p>
+<p>Также вам нужно знать о принятой мной лицензии <a href="https://github.com/dudochkin-victor/performance-profiling/blob/docs/LICENSE">CC0 1.0 Universal</a> на этот материал. Дополнительный код конечных продуктов находится под лицензией <a href="https://github.com/dudochkin-victor/performance-profiling/blob/main/LICENSE">GNU General Public License v3.0</a> в ветке <code>main</code>.</p>
+<p>С Уважением, Дудочкин Виктор.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+                            <a rel="next" href="v2/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+                    <a rel="next" href="v2/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

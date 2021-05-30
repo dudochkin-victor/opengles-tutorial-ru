@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Cоздание окна - Rust OpenGL ES tutorial</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Предисловие</a></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">1.</strong> OpenGL ES 2.0</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../v2/00-setup.html"><strong aria-hidden="true">1.1.</strong> С нуля</a></li><li class="chapter-item expanded "><a href="../v2/01-window.html" class="active"><strong aria-hidden="true">1.2.</strong> Cоздание окна</a></li><li class="chapter-item expanded "><a href="../v2/02-opengles-context.html"><strong aria-hidden="true">1.3.</strong> OpenGL контекст</a></li><li class="chapter-item expanded "><a href="../v2/03-compiling-shaders.html"><strong aria-hidden="true">1.4.</strong> Компиляция шейдеров</a></li><li class="chapter-item expanded "><a href="../v2/04-triangle.html"><strong aria-hidden="true">1.5.</strong> Треугольник</a></li><li class="chapter-item expanded "><a href="../v2/05-triangle-colors.html"><strong aria-hidden="true">1.6.</strong> Цветной треугольник</a></li><li class="chapter-item expanded "><a href="../v2/06-gl-generator.html"><strong aria-hidden="true">1.7.</strong> GL генератор</a></li><li class="chapter-item expanded "><a href="../v2/07-basic-resources.html"><strong aria-hidden="true">1.8.</strong> Основные ресурсы</a></li><li class="chapter-item expanded "><a href="../v2/08-failure.html"><strong aria-hidden="true">1.9.</strong> Использование библиотеки Failure</a></li><li class="chapter-item expanded "><a href="../v2/09-vertex-attribute-format.html"><strong aria-hidden="true">1.10.</strong> Формат аттрибутов вершин</a></li><li class="chapter-item expanded "><a href="../v2/10-procedural-macros.html"><strong aria-hidden="true">1.11.</strong> Процедурные макросы</a></li><li class="chapter-item expanded "><a href="../v2/11-vertex-data-types.html"><strong aria-hidden="true">1.12.</strong> Типы данных вершин</a></li><li class="chapter-item expanded "><a href="../v2/12-buffers.html"><strong aria-hidden="true">1.13.</strong> Буферы</a></li><li class="chapter-item expanded "><a href="../v2/13-safe-triangle-nalgebra.html"><strong aria-hidden="true">1.14.</strong> Треугольник и преобразования</a></li></ol></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">2.</strong> OpenGL ES 3.0</a></li><li class="chapter-item expanded "><a href="../shaders/intro.html"><strong aria-hidden="true">3.</strong> Шэйдеры GLSL</a></li><li class="chapter-item expanded affix "><a href="../conclusion.html">Заключение</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Rust OpenGL ES tutorial</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#Окно" id="Окно">Окно</a></h1>
+<blockquote>
+<p><a href="00-setup.html">Ранее</a> Мы получили некоторую мотивацию для использования Rust и настроили нашу среду разработки.</p>
+</blockquote>
+<p>В этой главе мы создадим окно! Если это не звучит слишком увлекательно, мы также узнаем о пакетах Rust. Очень волнующе.</p>
+<p>Чтобы создать окно, которое работает на нескольких платформах, а также использовать OpenGL ES контекст или кросс-платформенный ввод пользователя мы будем использовать пакет <a href="https://crates.io/crates/winit">winit</a>.</p>
+<h2><a class="header" href="#Библиотеки-rust" id="Библиотеки-rust">Библиотеки Rust</a></h2>
+<p>Библиотеки Rust называются <code>crates</code>, а консольный менеджер пакетов для Rust называется <code>cargo</code>. Библиотеки могут быть найдены на центральном репозитории по ссылке <a href="https://crates.io">crates.io</a>.</p>
+<p>Новуй пакет для Rust можно создать в используя команду <code>cargo new library-name</code>. Структура каталогов для новой пакета будет выглядеть очень похожэ на наш первый проект <code>hello-world</code>:</p>
+<pre><code class="language-txt">library-name
+    src
+        lib.rs
+    Cargo.toml
+</code></pre>
+<p>Разница от исполняемого проекта, в том что в директории <code>src</code> вместо <code>main.rs</code> присутствует <code>lib.rs</code>.</p>
+<p>Файл <code>Cargo.toml</code> описывает наш проект, в независимоти от того библиотека это, или исполняемый проект. Он содержит идентификатор преокта, список зависимостей, ссылку на документацию и многое другое. За более детальной информацией по содержимому манифеста <code>Cargo.toml</code> обратитесь <a href="https://doc.rust-lang.org/cargo/">к документации по Cargo</a>.</p>
+<h2><a class="header" href="#Пакет-winit" id="Пакет-winit">Пакет winit</a></h2>
+<p>Пакет <code>winit</code> это кросс-платформенная библиотека для создания окна и обработки событий пользователя, таких как ввод пользователя с клавиатуры или мышки.</p>
+<p>Можно посмотерть более детальную информацию об этом пакете по ссылке <a href="https://crates.io/crates/winit">winit</a>.</p>
+<h2><a class="header" href="#Зависимости" id="Зависимости">Зависимости</a></h2>
+<p>Для того чтобы быстро довавлять зависимости в наш проект мы будем использовать <code>cargo-edit</code>. Для этого нужно его установить с помошью команды в вашем терминале:</p>
+<pre><code class="language-txt">&gt; cargo install cargo-edit
+</code></pre>
+<p>Давайте создадим новый проект по имени <code>game</code>.</p>
+<pre><code class="language-txt">&gt; cargo new --bin game
+</code></pre>
+<p>Чтобы добавить пакет <code>winit</code> в наш проект введите команду в терминале из корня проекта:</p>
+<pre><code class="language-txt">&gt; cargo add winit
+</code></pre>
+<p>Эта команда добавит секцию <code>[dependencies]</code> в файл <code>Cargo.toml</code>, с пакетом <code>winit</code> в качестве зависимости:</p>
+<p><em>Cargo.toml, incomplete</em></p>
+<pre><code class="language-toml">[dependencies]
+winit = &quot;0.25.0&quot;
+</code></pre>
+<p>На момент написания этой главы новейшей версий <code>winit</code> является <code>0.25.0</code>. Вы можете ввести эту версию, чтобы убедиться, что все компилируется.</p>
+<p>Указание зависимости позволяет загрузить её.</p>
+<p>Чуть ниже я объясню назначение остальных зависимостей, сейчас же приведите секцию <code>[dependencies]</code> к следующему виду: </p>
+<pre><code class="language-toml">[dependencies]
+env_logger = &quot;0.8&quot;
+khronos-egl = &quot;4.1&quot;
+log = &quot;0.4&quot;
+opengles = &quot;0.1&quot;
+raw-window-handle = &quot;0.3&quot;
+winit = &quot;0.25&quot;
+</code></pre>
+<p>Чтобы использовать заши зависимости, мы должны ссылаться на них.</p>
+<h2><a class="header" href="#Использование-winit" id="Использование-winit">Использование winit</a></h2>
+<p>Укажите ссылки на неообходимые нам структуры, добавив в верхнюю часть файла <code>main.rs</code> соответствующий код:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use winit::{
+    dpi::{LogicalSize, PhysicalSize, Size},
+    event::{Event, KeyboardInput, VirtualKeyCode, WindowEvent},
+    event_loop::{ControlFlow, EventLoop},
+    window::WindowBuilder,
+};
+<span class="boring">}
+</span></code></pre></pre>
+<p>Этот позволит использовать короткие имена структур из пакета <code>winit</code>. Функции <code>winit</code> могут быть вызваны как <code>EventLoop::new()</code>.</p>
+<h2><a class="header" href="#Инициализация-winit" id="Инициализация-winit">Инициализация winit.</a></h2>
+<p>Приведите код функции <code>main</code> к виду показаному ниже:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let event_loop = EventLoop::new();
+
+    let wb = WindowBuilder::new()
+        .with_min_inner_size(Size::Logical(LogicalSize::new(64.0, 64.0)))
+        .with_inner_size(Size::Physical(PhysicalSize::new(900, 700)))
+        .with_title(&quot;Game&quot;.to_string());
+
+    let _window = wb.build(&amp;event_loop).unwrap();
+
+    event_loop.run(move |event, _, control_flow| {
+        *control_flow = ControlFlow::Wait;
+
+        match event {
+            Event::WindowEvent { event, .. } =&gt; match event {
+                WindowEvent::CloseRequested =&gt; *control_flow = ControlFlow::Exit,
+                WindowEvent::KeyboardInput {
+                    input:
+                        KeyboardInput {
+                            virtual_keycode: Some(VirtualKeyCode::Escape),
+                            ..
+                        },
+                    ..
+                } =&gt; *control_flow = ControlFlow::Exit,
+                WindowEvent::Resized(_) =&gt; {
+                    // make changes based on window size
+                }
+                _ =&gt; {}
+            },
+            Event::RedrawEventsCleared =&gt; {
+                // render window contents here
+            }
+            _ =&gt; {}
+        }
+    });
+}
+</code></pre></pre>
+<p>Ниже мы обсудим каждую деталь кода. Но сначала запустим!</p>
+<pre><code class="language-txt">&gt; cargo run
+</code></pre>
+<p>Возможно вы не сразу заметите созданное окно, потому что мы ничего не отображали в нем.</p>
+<pre><code class="language-txt">   Compiling lesson-01-window v0.1.0 (/home/opengles-tutorial/opengles-lesson)
+    Finished dev [unoptimized + debuginfo] target(s) in 9.31s
+     Running `/home/opengles-tutorial/target/debug/lesson-01-window`
+</code></pre>
+<p>Прервите исполнение с помощью комбинации клавишь <code>Ctrl+C</code>.</p>
+<h2><a class="header" href="#Разбор-кода" id="Разбор-кода">Разбор кода</a></h2>
+<p>Вернемся к коду. Давайте разберем его по крупицам.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let event_loop = EventLoop::new();
+<span class="boring">}
+</span></code></pre></pre>
+<p>Эта строчка инициализирует цикл событий для обработки событий вашей оконной системы, таких как запрос на перерисовку окна или ввод пользователя. До тех пор пока работает цикл обработки событий работает и ваше приложение.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let wb = WindowBuilder::new()
+    .with_min_inner_size(Size::Logical(LogicalSize::new(64.0, 64.0)))
+    .with_inner_size(Size::Physical(PhysicalSize::new(900, 700)))
+    .with_title(&quot;Game&quot;.to_string());
+<span class="boring">}
+</span></code></pre></pre>
+<p>Строчки выше конфигурируют окно используя Builder паттерн. Мы задаем минимальный рамер окна, текущий размер окна и заголовок.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _window = wb.build(&amp;event_loop).unwrap();
+<span class="boring">}
+</span></code></pre></pre>
+<p>Мы создаем окно, привязав его к циклу обработки событий оконной системы. Мы использовали имя переменной с префиксом поддеркивания <code>_window</code>, чтобы избежать предупреждающих сообщений компилятора, потому как мы еще не используем методы окна.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>event_loop.run(move |event, _, control_flow| {
+    ...
+});
+<span class="boring">}
+</span></code></pre></pre>
+<p>Конструкция выше запускает основной цикл обработки событий оконной системы. Программа работает до тех пор пока мы находимся в этом цикле. Единственным аргументом этого цикла является обработчик событий в виде замыкания.</p>
+<p>Рассмотрим процесс обработки событий более детально. 
+Обработчик событий помимо непосредственно события получает ссылку на объект, который контролирует цикл обработки событий.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>*control_flow = ControlFlow::Wait;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Установив его в значение <code>ControlFlow::Wait</code> мы приостанавливаем цикл обработки событий, если события недоступны для обработки. Это идеально подходит для неигровых приложений, которые обновляются только в ответ на ввод пользователя и потребляют значительно меньше энергии/времени процессора, чем <code>ControlFlow::Poll</code>. </p>
+<p>Непосредственная обработка события подразумевает собой разбор перечисления события:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match event {
+    Event::WindowEvent { event, .. } =&gt; match event {
+        ...
+    },
+    Event::RedrawEventsCleared =&gt; {
+        // render window contents here
+    }
+    _ =&gt; {}
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>В случае <code>Event::WindowEvent</code> мы обрабатываем события оконного менеджера и ввод пользователя.
+Когда мы получаем <code>Event::RedrawEventsCleared</code>, то мы должны отрисовать содержимое окна. Здесь мы будем рендерить нашу графику.</p>
+<p>Нам осталось более детально рассмотреть обработку событий окна.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>Event::WindowEvent { event, .. } =&gt; match event {
+    WindowEvent::CloseRequested =&gt; *control_flow = ControlFlow::Exit,
+    WindowEvent::KeyboardInput {
+        input:
+            KeyboardInput {
+                virtual_keycode: Some(VirtualKeyCode::Escape),
+                ..
+            },
+        ..
+    } =&gt; *control_flow = ControlFlow::Exit,
+    WindowEvent::Resized(_) =&gt; {
+        // make changes based on window size
+    }
+    _ =&gt; {}
+},
+<span class="boring">}
+</span></code></pre></pre>
+<p><code>WindowEvent::CloseRequested</code> происходит в случае закрытия окна с помощью <code>x</code> кнопки окна. Логичной реакцией на это действие - будет завершение работы программы. Чтобы это сделать мы присвоим переменной состояния цикла обработки событий значение <code>ControlFlow::Exit</code>.</p>
+<p>Обработка событий клавиатуры происходит по событию <code>WindowEvent::KeyboardInput</code>. В этой ситуации если пользователь нажмет клавишу <code>Esc</code>, мы также завершим работу программы.</p>
+<p>Последнее событие котрое мы будем обрабатывать - <code>WindowEvent::Resized</code>. Оно отвечает за изменение размеров окна. И в этой ситуации я предпологаю что мы должны поменять внутренние переменные нашего приложения для корректного отображения нашей графики.</p>
+<p>Остальные события на данном этапе мы не обрабатываем. Чтобы получить более детальную информацию по доступным событиям обратитесь к документации <a href="https://docs.rs/winit/">winit</a></p>
+<p>Код этой главы доступен в основном <a href="https://github.com/angular-rust/opengles-tutorial/tree/main/lesson-01">репозитории книги</a>.</p>
+<p>Теперь наше окно может быть окончательно закрыто, и <a href="02-opengles-context.html">мы можем начать рисовать внутри окна</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../v2/00-setup.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../v2/02-opengles-context.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../v2/00-setup.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../v2/02-opengles-context.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

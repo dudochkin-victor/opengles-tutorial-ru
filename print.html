@@ -1,0 +1,774 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust OpenGL ES tutorial</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="preface.html">Предисловие</a></li><li class="chapter-item expanded "><a href="v2/intro.html"><strong aria-hidden="true">1.</strong> OpenGL ES 2.0</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="v2/00-setup.html"><strong aria-hidden="true">1.1.</strong> С нуля</a></li><li class="chapter-item expanded "><a href="v2/01-window.html"><strong aria-hidden="true">1.2.</strong> Cоздание окна</a></li><li class="chapter-item expanded "><a href="v2/02-opengles-context.html"><strong aria-hidden="true">1.3.</strong> OpenGL контекст</a></li><li class="chapter-item expanded "><a href="v2/03-compiling-shaders.html"><strong aria-hidden="true">1.4.</strong> Компиляция шейдеров</a></li><li class="chapter-item expanded "><a href="v2/04-triangle.html"><strong aria-hidden="true">1.5.</strong> Треугольник</a></li><li class="chapter-item expanded "><a href="v2/05-triangle-colors.html"><strong aria-hidden="true">1.6.</strong> Цветной треугольник</a></li><li class="chapter-item expanded "><a href="v2/06-gl-generator.html"><strong aria-hidden="true">1.7.</strong> GL генератор</a></li><li class="chapter-item expanded "><a href="v2/07-basic-resources.html"><strong aria-hidden="true">1.8.</strong> Основные ресурсы</a></li><li class="chapter-item expanded "><a href="v2/08-failure.html"><strong aria-hidden="true">1.9.</strong> Использование библиотеки Failure</a></li><li class="chapter-item expanded "><a href="v2/09-vertex-attribute-format.html"><strong aria-hidden="true">1.10.</strong> Формат аттрибутов вершин</a></li><li class="chapter-item expanded "><a href="v2/10-procedural-macros.html"><strong aria-hidden="true">1.11.</strong> Процедурные макросы</a></li><li class="chapter-item expanded "><a href="v2/11-vertex-data-types.html"><strong aria-hidden="true">1.12.</strong> Типы данных вершин</a></li><li class="chapter-item expanded "><a href="v2/12-buffers.html"><strong aria-hidden="true">1.13.</strong> Буферы</a></li><li class="chapter-item expanded "><a href="v2/13-safe-triangle-nalgebra.html"><strong aria-hidden="true">1.14.</strong> Треугольник и преобразования</a></li></ol></li><li class="chapter-item expanded "><a href="v2/intro.html"><strong aria-hidden="true">2.</strong> OpenGL ES 3.0</a></li><li class="chapter-item expanded "><a href="shaders/intro.html"><strong aria-hidden="true">3.</strong> Шэйдеры GLSL</a></li><li class="chapter-item expanded affix "><a href="conclusion.html">Заключение</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Rust OpenGL ES tutorial</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#Предисловие" id="Предисловие">Предисловие</a></h1>
+<h2><a class="header" href="#Об-Авторе" id="Об-Авторе">Об Авторе</a></h2>
+<p>Я специалист в области компьютерных технологий с 25+ летним опытом. В основном я занимаюсь программированием на всех востребованных рынком языках. </p>
+<p>Я начал программировать в 18. Увидев мой интерес к компьютерам, мои замечательные родители, купили мне ZX Spectrum. Вдоволь наигравшись в компьютерные игры, я понял что нужно что-то делать. И когда в одном из фильмов я увидел световое перо, у меня возникла идея собрать его самостоятельно. Ведь у меня начальное художественное образование. </p>
+<p><strong>Я попросил свою маму принести мне с работы фоторезистор.</strong></p>
+<p>И вот у меня в руках оптопара в металлическом корпусе... Но напильник решает все. И когда крышка элемента была сточена, осталось дело за кодом.
+Идея заключалась в том чтобы гонять по экрану телевизора точку, и слушать порт к которому была подключена оптопара.</p>
+<blockquote>
+<p>Первым языком я изучил Бэйсик. И первую программу я написал на нем.</p>
+</blockquote>
+<p>Но это была моя первая <strong>настоящая</strong> программа на Ассемблере. 
+Код работал идеально, но кто-же знал что <em>&quot;черный экран Электронной Лучевой Трубки испускает чрезмерное излучение для оптопары&quot;</em>.</p>
+<p><strong>Так я стал программистом и узнал что баги бывают не только в коде</strong></p>
+<p>Windows был очевидным выбором для хомячка в конце 90-х. Помните фильм &quot;Хакеры&quot; с Анджелиной Джоли. И если внимательно смотреть то можно увидеть консоль, SSH-сессию и всякое такое.</p>
+<p><strong>Вот вы в конце 90-х часто коннектились по SSH к удаленному серверу? Ну согласитесь же интересно?</strong></p>
+<p>Вообщем я поджал раздел файловой системы Windows и начал свой путь в Linux. Чего только я не перепробовал - RedHat, Fedora, Mandriva, Debian, FreeBSD, OpenBSD и другие, включая Solaris. Знакомство с UNIX кончилось инициативой - <strong>&quot;не загружать Windows в течении месяца, и потом принять решение&quot;</strong>.</p>
+<h3><a class="header" href="#Хватит-знакомится-пора-использовать-по-максимуму" id="Хватит-знакомится-пора-использовать-по-максимуму">Хватит знакомится, пора использовать по максимуму</a></h3>
+<p>Вообщем с 2004-го года у меня только Gentoo. Вот как поставил в 2004-м, так и работает.</p>
+<blockquote>
+<p>Gentoo - это про производительность.
+Когда ты из своего железа выжимаешь максимум, получая максимальную гибкость системы.</p>
+</blockquote>
+<p><strong>Когда появилась Nodejs - это было круто</strong></p>
+<p>Писать на одном языке и клиент и сервер, и при этом это серьезно превосходит по производительности все остальное. У меня были отличные проекты на Nodejs и Mysql, несколько сайтов, система морфологического анализа, я писал свои расширения для ноды (yandex-money...) и делал пулреквесты в существующие (libxmljs...). </p>
+<blockquote>
+<p>И это всё - тоже про производительность. Тебе не надо изучать несколько языков, пиши только на JavaScript.</p>
+</blockquote>
+<p><em>Что еще рассказать, историй хватит на небольшую книжку.</em></p>
+<h3><a class="header" href="#Мне-нравится-изучать-все-новое" id="Мне-нравится-изучать-все-новое">Мне нравится изучать все новое</a></h3>
+<ul>
+<li>
+<p>Однажды пришлось освоить разработку под Android (SDK+NDK), потом был iOS (ObjC/Swift), MacOSX (ObjC/Swift).</p>
+</li>
+<li>
+<p>Помню занимался Digital Signal Processing (DSP), нужно было речь человека превратить в мяукание.</p>
+</li>
+<li>
+<p>Занимался Natural Language Processing (NLP), портировал свой модуль морфологии с Nodejs на Golang.</p>
+</li>
+<li>
+<p>Хотел позаниматься SEO-оптимизацией контента. RAKE - хороший алгоритм, но перфекционизм взял свое и я посчитал TF/IDF всей Википедии на 6 языках.</p>
+<p>Когда считал TF/IDF, то возникли проблемы с памятью, Go не эффективно ее высвобождал. </p>
+</li>
+</ul>
+<p><strong>Поэтому я изучил Rust</strong> </p>
+<p>Я считаю этот язык одним из самых важных. Если представить его как язык для общения, то Rust - наверное один из самых выразительных языков в мире, такой же как Русский в контексте мировой литературы. </p>
+<p>Rust дает уверенность в качестве кода, при этом позволет получить максимальную производительность и стабильность в боевых условиях. Я не могу сказать что написав код на C/C++ вы создадите что-то хуже чем на Rust. Но я также не могу сказать, что вы сделаете это лучше.</p>
+<p>Сейчас в зону моих интересов также входит блокчейн, Deep Learning, OpenCL и Cuda.</p>
+<h2><a class="header" href="#Пожелания-от-автора" id="Пожелания-от-автора">Пожелания от автора</a></h2>
+<p>Надеюсь, что моя инициатива собрать опыт по оптимизации приложений, профилированию производительности и тестированию, будет вами воспринята как хорошая база для своих исследований и вы получите собственный опыт в создании приложений, которыми вы смогли бы гордится по прошествии времени. И вам будет что показать миру, кроме фиги.</p>
+<p>Спасибо вам огромное за прочтение этой книги. Надеюсь время которое Вы потратите не будет потрачено зря и вы получите удовольствие. Я же постараюсь сделать текст максимально читабельным и веселым, чтобы вы не скучали как при прочтении документации, чем вы обычно занимаетесь.</p>
+<p>Помимо этого я хотел бы надеятся на поддержку сообщества, потому как я не считаю это каким-то произведением искусства или чем-то личным, и любые коментарии и обсуждения будут восприняты очень доброжелательно. Этот труд скорее компиляция идей и опыта сообщества заинтересованных людей. </p>
+<p>Однако я всетаки оставляю за собой право модерировать этот репозиторий на <a href="https://github.com/dudochkin-victor/performance-profiling">github</a> и сообщество в <a href="https://www.reddit.com/r/performance_profiling">Reddit</a>.</p>
+<p>Также вам нужно знать о принятой мной лицензии <a href="https://github.com/dudochkin-victor/performance-profiling/blob/docs/LICENSE">CC0 1.0 Universal</a> на этот материал. Дополнительный код конечных продуктов находится под лицензией <a href="https://github.com/dudochkin-victor/performance-profiling/blob/main/LICENSE">GNU General Public License v3.0</a> в ветке <code>main</code>.</p>
+<p>С Уважением, Дудочкин Виктор.</p>
+<h1><a class="header" href="#opengl-es-20" id="opengl-es-20">OpenGL ES 2.0</a></h1>
+<p>TODO:</p>
+<p><a href="v2/00-setup.html">Настройка с нуля</a></p>
+<h1><a class="header" href="#Настройка-с-нуля" id="Настройка-с-нуля">Настройка с нуля</a></h1>
+<p>Привет! Давайте узнаем, как работать с OpenGL ES в Rust.</p>
+<p>Я назвал эту главу &quot;Настройка с нуля&quot;, потому что предполагаю, что я мало знаю Rust и базовые знания 3D-графики и OpenGL ES.</p>
+<p>Таким образом, это руководство может научить вас основам Rust и тому, как заставить Rust работать с OpenGL, однако для более глубокого изучения OpenGL вам понадобится другой учебник или книга.</p>
+<p>&quot;С нуля&quot; также означает, что мы будем пытаться создавать абстракции самостоятельно, чтобы лучше узнать Rust. В дополнение к этому, мы сможем следовать существующим руководствам по OpenGL, потому что мы будем точно знать, какие функции OpenGL мы вызываем.</p>
+<p>Обратите внимание, что я тоже учусь, делая это. Тем не менее, я уже однажды написал немного беспорядочный рендерер OpenGL ES на Rust, поэтому у меня есть некоторое представление о том, как это должно происходить. Я также не тороплюсь, чтобы убрать беспорядочный код и максимально упростить конечный результат.</p>
+<h2><a class="header" href="#Настройка-для-разработки-на-rust" id="Настройка-для-разработки-на-rust">Настройка для разработки на Rust</a></h2>
+<p>Есть много способов настроить среду разработки для Rust. Вы можете выбрать наиболее удобную для вас настройку на <a href="https://forge.rust-lang.org/platform-support.html">этой веб-странице</a>. Я объясню свою установку, которой вы можете следовать.</p>
+<p>Поскольку Rust изначально разрабатывался как кроссплатформенный, чистый код Rust будет компилироваться и запускаться на <a href="https://forge.rust-lang.org/platform-support.html">многих платформах</a>. Мы будем использовать подход, который не заставит Вас погружаться в детали взаимодействия с библиотеками написанными на C.</p>
+<p>Я пишу это руководство используя Linux в качестве основной платформы, и если вы используете OSX, то использование этого руководства не потребует практически никаких усилий.</p>
+<p>Во-первых, для любой настройки потребуется <a href="https://www.rustup.rs/">rustup</a>, установщик набора инструментов Rust, который позаботится об обновлении Rust и многое другое. Если вы установили Rust с помощью диспетчера пакетов вашей ОС или Homebrew, я рекомендую удалить его и переустановить через <code>rustup</code>.</p>
+<p>По завершении rustup должен быть доступен из командной строки: </p>
+<pre><code class="language-txt">&gt; rustup --version
+rustup 1.24.2 (755e2b07e 2021-05-12)
+</code></pre>
+<p>Установите набор инструментов с помощью rustup (возможно, уже установлен): </p>
+<p><strong>Установка в Linux</strong></p>
+<pre><code class="language-txt">&gt; rustup install stable-x86_64-unknown-linux-gnu
+</code></pre>
+<p><strong>Установка в OSX</strong></p>
+<pre><code class="language-txt">&gt; rustup install stable-x86_64-apple-darwin
+</code></pre>
+<p><strong>Установка в Windows</strong></p>
+<p>В Windows Rust доступен с двумя наборами инструментов: GNU (совместим с библиотеками Mingw C) и MSVC (совместим с библиотеками Microsoft C ++ C). Мы будем использовать набор инструментов MSVC. </p>
+<pre><code class="language-txt">&gt; rustup install stable-x86_64-pc-windows-msvc
+</code></pre>
+<p>Сделать по умолчанию: </p>
+<pre><code class="language-txt">&gt; rustup default stable
+</code></pre>
+<p><code>rustc</code> and <code>cargo</code> оба должны работать (настройте требуемые пути к среде и снова войдите в систему, если они не работают): </p>
+<pre><code class="language-txt">&gt; rustc --version
+rustc 1.52.1 (9bc8c42bb 2021-05-09)
+</code></pre>
+<pre><code class="language-txt">&gt; cargo --version
+cargo 1.52.0 (69767412a 2021-04-21)
+</code></pre>
+<p>Я использую бесплатную <a href="https://code.visualstudio.com/">Visual Studio Code</a>, потому что как она имеет очень хорошую поддержку Rust за счет использования расширений.</p>
+<h2><a class="header" href="#Привет-мир" id="Привет-мир">Привет мир</a></h2>
+<p>В командной строке создайте новый проект Rust: </p>
+<pre><code class="language-txt">&gt; cargo new --bin new-project
+     Created binary (application) `new-project` project
+</code></pre>
+<p>Вы можете запустить его из командной строки: </p>
+<pre><code class="language-txt">&gt; cd new-project
+new-project&gt; cargo run
+   Compiling new-project v0.1.0 
+    Finished dev [unoptimized + debuginfo] target(s) in 1.8 secs
+     Running `target\debug\new-project`
+Hello, world!
+</code></pre>
+<p>Похоже, &quot;Hello world&quot; уже написано, как это скучно?</p>
+<p>Запустите VSCode и откройте тот же проект Rust. Он будет содержать каталог src с файлом main.rs. В файле <code>main.rs</code> вы найдете функцию<code> main</code>: </p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    println!(&quot;Hello, world!&quot;);
+}
+</code></pre></pre>
+<p>Поздравляю! Мы готовы начать <a href="v2/01-window.html">Cоздание окна</a>.</p>
+<h1><a class="header" href="#Окно" id="Окно">Окно</a></h1>
+<blockquote>
+<p><a href="v2/00-setup.html">Ранее</a> Мы получили некоторую мотивацию для использования Rust и настроили нашу среду разработки.</p>
+</blockquote>
+<p>В этой главе мы создадим окно! Если это не звучит слишком увлекательно, мы также узнаем о пакетах Rust. Очень волнующе.</p>
+<p>Чтобы создать окно, которое работает на нескольких платформах, а также использовать OpenGL ES контекст или кросс-платформенный ввод пользователя мы будем использовать пакет <a href="https://crates.io/crates/winit">winit</a>.</p>
+<h2><a class="header" href="#Библиотеки-rust" id="Библиотеки-rust">Библиотеки Rust</a></h2>
+<p>Библиотеки Rust называются <code>crates</code>, а консольный менеджер пакетов для Rust называется <code>cargo</code>. Библиотеки могут быть найдены на центральном репозитории по ссылке <a href="https://crates.io">crates.io</a>.</p>
+<p>Новуй пакет для Rust можно создать в используя команду <code>cargo new library-name</code>. Структура каталогов для новой пакета будет выглядеть очень похожэ на наш первый проект <code>hello-world</code>:</p>
+<pre><code class="language-txt">library-name
+    src
+        lib.rs
+    Cargo.toml
+</code></pre>
+<p>Разница от исполняемого проекта, в том что в директории <code>src</code> вместо <code>main.rs</code> присутствует <code>lib.rs</code>.</p>
+<p>Файл <code>Cargo.toml</code> описывает наш проект, в независимоти от того библиотека это, или исполняемый проект. Он содержит идентификатор преокта, список зависимостей, ссылку на документацию и многое другое. За более детальной информацией по содержимому манифеста <code>Cargo.toml</code> обратитесь <a href="https://doc.rust-lang.org/cargo/">к документации по Cargo</a>.</p>
+<h2><a class="header" href="#Пакет-winit" id="Пакет-winit">Пакет winit</a></h2>
+<p>Пакет <code>winit</code> это кросс-платформенная библиотека для создания окна и обработки событий пользователя, таких как ввод пользователя с клавиатуры или мышки.</p>
+<p>Можно посмотерть более детальную информацию об этом пакете по ссылке <a href="https://crates.io/crates/winit">winit</a>.</p>
+<h2><a class="header" href="#Зависимости" id="Зависимости">Зависимости</a></h2>
+<p>Для того чтобы быстро довавлять зависимости в наш проект мы будем использовать <code>cargo-edit</code>. Для этого нужно его установить с помошью команды в вашем терминале:</p>
+<pre><code class="language-txt">&gt; cargo install cargo-edit
+</code></pre>
+<p>Давайте создадим новый проект по имени <code>game</code>.</p>
+<pre><code class="language-txt">&gt; cargo new --bin game
+</code></pre>
+<p>Чтобы добавить пакет <code>winit</code> в наш проект введите команду в терминале из корня проекта:</p>
+<pre><code class="language-txt">&gt; cargo add winit
+</code></pre>
+<p>Эта команда добавит секцию <code>[dependencies]</code> в файл <code>Cargo.toml</code>, с пакетом <code>winit</code> в качестве зависимости:</p>
+<p><em>Cargo.toml, incomplete</em></p>
+<pre><code class="language-toml">[dependencies]
+winit = &quot;0.25.0&quot;
+</code></pre>
+<p>На момент написания этой главы новейшей версий <code>winit</code> является <code>0.25.0</code>. Вы можете ввести эту версию, чтобы убедиться, что все компилируется.</p>
+<p>Указание зависимости позволяет загрузить её.</p>
+<p>Чуть ниже я объясню назначение остальных зависимостей, сейчас же приведите секцию <code>[dependencies]</code> к следующему виду: </p>
+<pre><code class="language-toml">[dependencies]
+env_logger = &quot;0.8&quot;
+khronos-egl = &quot;4.1&quot;
+log = &quot;0.4&quot;
+opengles = &quot;0.1&quot;
+raw-window-handle = &quot;0.3&quot;
+winit = &quot;0.25&quot;
+</code></pre>
+<p>Чтобы использовать заши зависимости, мы должны ссылаться на них.</p>
+<h2><a class="header" href="#Использование-winit" id="Использование-winit">Использование winit</a></h2>
+<p>Укажите ссылки на неообходимые нам структуры, добавив в верхнюю часть файла <code>main.rs</code> соответствующий код:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use winit::{
+    dpi::{LogicalSize, PhysicalSize, Size},
+    event::{Event, KeyboardInput, VirtualKeyCode, WindowEvent},
+    event_loop::{ControlFlow, EventLoop},
+    window::WindowBuilder,
+};
+<span class="boring">}
+</span></code></pre></pre>
+<p>Этот позволит использовать короткие имена структур из пакета <code>winit</code>. Функции <code>winit</code> могут быть вызваны как <code>EventLoop::new()</code>.</p>
+<h2><a class="header" href="#Инициализация-winit" id="Инициализация-winit">Инициализация winit.</a></h2>
+<p>Приведите код функции <code>main</code> к виду показаному ниже:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let event_loop = EventLoop::new();
+
+    let wb = WindowBuilder::new()
+        .with_min_inner_size(Size::Logical(LogicalSize::new(64.0, 64.0)))
+        .with_inner_size(Size::Physical(PhysicalSize::new(900, 700)))
+        .with_title(&quot;Game&quot;.to_string());
+
+    let _window = wb.build(&amp;event_loop).unwrap();
+
+    event_loop.run(move |event, _, control_flow| {
+        *control_flow = ControlFlow::Wait;
+
+        match event {
+            Event::WindowEvent { event, .. } =&gt; match event {
+                WindowEvent::CloseRequested =&gt; *control_flow = ControlFlow::Exit,
+                WindowEvent::KeyboardInput {
+                    input:
+                        KeyboardInput {
+                            virtual_keycode: Some(VirtualKeyCode::Escape),
+                            ..
+                        },
+                    ..
+                } =&gt; *control_flow = ControlFlow::Exit,
+                WindowEvent::Resized(_) =&gt; {
+                    // make changes based on window size
+                }
+                _ =&gt; {}
+            },
+            Event::RedrawEventsCleared =&gt; {
+                // render window contents here
+            }
+            _ =&gt; {}
+        }
+    });
+}
+</code></pre></pre>
+<p>Ниже мы обсудим каждую деталь кода. Но сначала запустим!</p>
+<pre><code class="language-txt">&gt; cargo run
+</code></pre>
+<p>Возможно вы не сразу заметите созданное окно, потому что мы ничего не отображали в нем.</p>
+<pre><code class="language-txt">   Compiling lesson-01-window v0.1.0 (/home/opengles-tutorial/opengles-lesson)
+    Finished dev [unoptimized + debuginfo] target(s) in 9.31s
+     Running `/home/opengles-tutorial/target/debug/lesson-01-window`
+</code></pre>
+<p>Прервите исполнение с помощью комбинации клавишь <code>Ctrl+C</code>.</p>
+<h2><a class="header" href="#Разбор-кода" id="Разбор-кода">Разбор кода</a></h2>
+<p>Вернемся к коду. Давайте разберем его по крупицам.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let event_loop = EventLoop::new();
+<span class="boring">}
+</span></code></pre></pre>
+<p>Эта строчка инициализирует цикл событий для обработки событий вашей оконной системы, таких как запрос на перерисовку окна или ввод пользователя. До тех пор пока работает цикл обработки событий работает и ваше приложение.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let wb = WindowBuilder::new()
+    .with_min_inner_size(Size::Logical(LogicalSize::new(64.0, 64.0)))
+    .with_inner_size(Size::Physical(PhysicalSize::new(900, 700)))
+    .with_title(&quot;Game&quot;.to_string());
+<span class="boring">}
+</span></code></pre></pre>
+<p>Строчки выше конфигурируют окно используя Builder паттерн. Мы задаем минимальный рамер окна, текущий размер окна и заголовок.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _window = wb.build(&amp;event_loop).unwrap();
+<span class="boring">}
+</span></code></pre></pre>
+<p>Мы создаем окно, привязав его к циклу обработки событий оконной системы. Мы использовали имя переменной с префиксом поддеркивания <code>_window</code>, чтобы избежать предупреждающих сообщений компилятора, потому как мы еще не используем методы окна.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>event_loop.run(move |event, _, control_flow| {
+    ...
+});
+<span class="boring">}
+</span></code></pre></pre>
+<p>Конструкция выше запускает основной цикл обработки событий оконной системы. Программа работает до тех пор пока мы находимся в этом цикле. Единственным аргументом этого цикла является обработчик событий в виде замыкания.</p>
+<p>Рассмотрим процесс обработки событий более детально. 
+Обработчик событий помимо непосредственно события получает ссылку на объект, который контролирует цикл обработки событий.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>*control_flow = ControlFlow::Wait;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Установив его в значение <code>ControlFlow::Wait</code> мы приостанавливаем цикл обработки событий, если события недоступны для обработки. Это идеально подходит для неигровых приложений, которые обновляются только в ответ на ввод пользователя и потребляют значительно меньше энергии/времени процессора, чем <code>ControlFlow::Poll</code>. </p>
+<p>Непосредственная обработка события подразумевает собой разбор перечисления события:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match event {
+    Event::WindowEvent { event, .. } =&gt; match event {
+        ...
+    },
+    Event::RedrawEventsCleared =&gt; {
+        // render window contents here
+    }
+    _ =&gt; {}
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>В случае <code>Event::WindowEvent</code> мы обрабатываем события оконного менеджера и ввод пользователя.
+Когда мы получаем <code>Event::RedrawEventsCleared</code>, то мы должны отрисовать содержимое окна. Здесь мы будем рендерить нашу графику.</p>
+<p>Нам осталось более детально рассмотреть обработку событий окна.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>Event::WindowEvent { event, .. } =&gt; match event {
+    WindowEvent::CloseRequested =&gt; *control_flow = ControlFlow::Exit,
+    WindowEvent::KeyboardInput {
+        input:
+            KeyboardInput {
+                virtual_keycode: Some(VirtualKeyCode::Escape),
+                ..
+            },
+        ..
+    } =&gt; *control_flow = ControlFlow::Exit,
+    WindowEvent::Resized(_) =&gt; {
+        // make changes based on window size
+    }
+    _ =&gt; {}
+},
+<span class="boring">}
+</span></code></pre></pre>
+<p><code>WindowEvent::CloseRequested</code> происходит в случае закрытия окна с помощью <code>x</code> кнопки окна. Логичной реакцией на это действие - будет завершение работы программы. Чтобы это сделать мы присвоим переменной состояния цикла обработки событий значение <code>ControlFlow::Exit</code>.</p>
+<p>Обработка событий клавиатуры происходит по событию <code>WindowEvent::KeyboardInput</code>. В этой ситуации если пользователь нажмет клавишу <code>Esc</code>, мы также завершим работу программы.</p>
+<p>Последнее событие котрое мы будем обрабатывать - <code>WindowEvent::Resized</code>. Оно отвечает за изменение размеров окна. И в этой ситуации я предпологаю что мы должны поменять внутренние переменные нашего приложения для корректного отображения нашей графики.</p>
+<p>Остальные события на данном этапе мы не обрабатываем. Чтобы получить более детальную информацию по доступным событиям обратитесь к документации <a href="https://docs.rs/winit/">winit</a></p>
+<p>Код этой главы доступен в основном <a href="https://github.com/angular-rust/opengles-tutorial/tree/main/lesson-01">репозитории книги</a>.</p>
+<p>Теперь наше окно может быть окончательно закрыто, и <a href="v2/02-opengles-context.html">мы можем начать рисовать внутри окна</a>.</p>
+<h1><a class="header" href="#opengl-контекст" id="opengl-контекст">OpenGL контекст</a></h1>
+<blockquote>
+<p><a href="v2/01-window.html">Ранее</a>, мы создали окно используя <code>winit</code> и научились обрабатывать события окна.</p>
+</blockquote>
+<p>В этой главе мы продолжим изучать OpengGLES, подключим OpenGL контекст в нашему окну и покрасим его в синий цвет.</p>
+<h2><a class="header" href="#opengl" id="opengl">OpenGL</a></h2>
+<p>Если вы будете <a href="https://crates.io/search?q=opengl">искать OpenGL на crates.io</a>, вы сможете найти мноцество библиотек которые занимаются взаимодействием с OpenGL, такие как <code>glium</code>, <code>glitter</code> и может быть другие.</p>
+<p>Цель этой книги, показать вам детали взаимодействия с OpenGL на более низком уровне. Это не говорит что всю работу мы будем делать самостоятельно!</p>
+<h2><a class="header" href="#gl-и-gl_generator" id="gl-и-gl_generator">gl и gl_generator</a></h2>
+<p>Краеугольный камень многих проектов OpenGL более высокого уровня в том что они содержат три пакета:</p>
+<ul>
+<li><code>khronos_api</code> - этот пакет содержит файлы XML для различных API-интерфейсов Khronos, таких как EGL, WGL, GLX, GL и другие.</li>
+<li><code>gl_generator</code> - это инструмент для генерации привязок кода Rust из XML-файлов <code>khronos_api</code>. Думайте об этом как о своем собственном настраиваемом генераторе для загрузки OpenGL (что-то вроде <a href="http://glew.sourceforge.net/">GLEW</a>).</li>
+<li><code>gl</code> - это API OpenGL, уже созданный с использованием <code>gl_generator</code>. Это почти правильно. На деле, <code>gl</code> код генерируется каждый раз когда вы собираете свой проект. Более детально мы обсудим это позже.</li>
+</ul>
+<p>Как я уже сказал, наша задача изучить OpenGL ES с использованием Rust на достаточно низком уровне. Но это воовсе не означает что нужно использовать эти низкоуровневые библиотеки, хоть некоторые из них мы и будем использовать. Однако я преверженнец достаточно чистого кода, и поэтому мы будем использовать разные из них. При поиске низкоуровневых библиотек для работы c OpenGL я натыкался на библиотеки обвязки - <code>wrappers</code>, которые просто дают доступ к API, но так как это не входит в их задачи, они не заботятся об удобстве использования.</p>
+<h2><a class="header" href="#Библиотека-khronos-egl" id="Библиотека-khronos-egl">Библиотека khronos-egl</a></h2>
+<p>EGL управляет графическим контекстом, привязкой поверхностей/буфер, синхронизацией рендеринга и обеспечивает &quot;высокопроизводительный, ускоренный, смешанный режим 2D и 3D рендеринга с использованием других API Khronos&quot;.</p>
+<p>Давайте добавим пакет <code>khronos-egl</code> в наш проект в секцию <code>[dependencies]</code> в файл <code>Cargo.toml</code>:</p>
+<p><em>Cargo.toml, incomplete</em></p>
+<pre><code class="language-toml">[dependencies]
+egl = {package = &quot;khronos-egl&quot;, version = &quot;4.1&quot;, features = [&quot;dynamic&quot;] }
+</code></pre>
+<p>Нам буlет удобнее общаться с EGL с помошью короткого имени <code>egl</code>, поэтому мы сделали ссылку на пакет <code>khronos-egl</code>, указали версию и свойства которые позволяют загружать во время исполнения динамическую библиотеку <code>libEGL.so</code>. </p>
+<p>Чуть ниже нам потребуется Arc, для того чтобы безопасно передавать между потоками EGL структуру.
+Поэтому добавим следующие строчки в начало нашего <code>main.rs</code> файла:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::sync::Arc;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Также инициализируем наш EGL объект, добавив в начало функции <code>main</code> следующий код:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    // EGL setup here
+    let egl = unsafe {
+        Arc::new(
+            egl::DynamicInstance::&lt;egl::EGL1_4&gt;::load_required()
+                .expect(&quot;unable to load libEGL.so&quot;),
+        )
+    };
+
+    // Setup OpenGL ES API
+    egl.bind_api(egl::OPENGL_ES_API)
+        .expect(&quot;unable to select OpenGL ES API&quot;); // for OpenGL ES
+    ...
+</code></pre></pre>
+<p>Давайте разберем на крупицы код, который мы добавили.</p>
+<p>Первой конструкцией мы создали объект EGL, попытавшись во время исполнения программы загрузить динамическую библиотеку <code>libEGL.so</code> (для Linux). 
+Далее мы указали этой библиотеке какой уровень АПИ мы будем использовать. В нашем случае мы передали аргумент <code>egl::OPENGL_ES_API</code> в функцию <code>bind_api</code>. Также возможно туда передать константу <code>egl::OPENGL_API</code>, но это не входит в задачи этой книги.</p>
+<h2><a class="header" href="#Просмотр-документации-по-зависимости-локально" id="Просмотр-документации-по-зависимости-локально">Просмотр документации по зависимости локально</a></h2>
+<p>Мы можем попросить <code>cargo</code> сформировать и открыть документацию на любой пакет, от которого зависит наш проект:</p>
+<pre><code class="language-txt">cargo doc -p khronos-egl --no-deps --open
+</code></pre>
+<ul>
+<li><code>-p khronos-egl</code> - это сокращение для <code>--package khronos-egl</code>, указывает, что нам нужна документация для этого пакета </li>
+<li><code>--no-deps</code> отключает рекурсивную документацию для всех зависимостей khronos-egl. Мы хотим отключить это в Windows, потому что <code>gl</code> транзитивно зависит от других пакетов, и создание документации для них заняло бы слишком много времени. </li>
+<li><code>--open</code> открывает сгенерированную документацию в окне браузера.</li>
+</ul>
+<h2><a class="header" href="#Создание-графического-контекста" id="Создание-графического-контекста">Создание графического контекста</a></h2>
+<p>После того как вы указали какой API вы будете использовать совместно с EGL время создать графический контекст.
+Для начала нам нужна будет информация о нашем дисплее. Мы не будем настраивать его, вместо этого просто получим информацию о дисплее по умолчанию и инициализируем его. Добавьте следующий код после вызова <code>egl.bind_api</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Setup Display
+    let display = egl
+        .get_display(egl::DEFAULT_DISPLAY)
+        .expect(&quot;unable to get display&quot;);
+    egl.initialize(display).expect(&quot;unable to init EGL&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Чтобы работать с графическим контекстом нам потребуется настроить его. В данном случае параметрами дисплея являются аттрибуты графического буфера. Более подробно значение каждого из атрибутов мы рассмотрим в следующих главах. А сейчас просто объявим их добавив следующий код:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Create context
+    let attrib_list = [
+        egl::BUFFER_SIZE,
+        16,
+        egl::DEPTH_SIZE,
+        16,
+        egl::STENCIL_SIZE,
+        0,
+        egl::SURFACE_TYPE,
+        egl::WINDOW_BIT,
+        egl::NONE,
+    ];
+<span class="boring">}
+</span></code></pre></pre>
+<p>Мы объявили достаточно простые атрибуты нашего графического буфера, но это не говорит что система может их нам предоставить. Так что давайте запросим у графической подсистемы конфигурацию которая будет соответствовать этим атрибутам. Добавляем следующие строчки:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Get the matching configuration.
+    let config = egl
+        .choose_first_config(display, &amp;attrib_list)
+        .expect(&quot;unable to choose EGL configuration&quot;)
+        .expect(&quot;no EGL configuration found&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Теперь у нас есть конфигурация графического буфера, совместимого с запрошенными нами атрибутами.
+Самое время создать графический контекст. У контекста как и у графического буфера также есть свой набор аттрибутов. Как и на что они влияют, мы рассмотрим в следующих главах. Сейчас же мы создадим графический контекст по умолчанию. То есть с пустым набором аттрибутов. Добавим ниже следующий строчки:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let ctx_attribs = [egl::NONE];
+    let ctx = egl
+        .create_context(display, config, None, &amp;ctx_attribs)
+        .expect(&quot;unable to create EGL context&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<h1><a class="header" href="#Создание-egl-поверхности" id="Создание-egl-поверхности">Создание EGL поверхности</a></h1>
+<p>В этой главе мы уже создали графический контекст, но этот графический контекст ничего не знает об окне в котором он должен быть отображен. Для того чтобы отобразить нашу графику в окне нам нужно будет привязать графический контекст к окну. И так чтобы создать поверхность окна, нам потребуется графический контекст, ссылка на окно и экран. В предыдущей <a href="v2/01-window.html">главе</a> мы создали окно с помошью <code>winit</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _window = wb.build(&amp;event_loop).unwrap();
+<span class="boring">}
+</span></code></pre></pre>
+<h3><a class="header" href="#Указатель-на-окно" id="Указатель-на-окно">Указатель на окно</a></h3>
+<p>Для того чтобы передать ссылку на окно, нам потребуется сырой (<code>raw</code>) указатель на него. То есть нам потребуется платформо зависимимый указатель на оконной системы. В случае с Linux это указатель на X11 или Wayland окно. Уже немного сложнее.</p>
+<p>Для того чтобы удобно работать с сущностями оконной системы в Rust существует пакет <code>raw-window-handle</code>, который также является зависимостью для <code>winit</code>. Добавим его в наш проект:</p>
+<pre><code class="language-txt">&gt; cargo add raw-window-handle
+</code></pre>
+<p>И укажем что бы будем использовать сущности из этого пакета, добавив в начало нашего <code>main.rs</code> файла:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use raw_window_handle::{HasRawWindowHandle, RawWindowHandle};
+<span class="boring">}
+</span></code></pre></pre>
+<p>Так как работа с сырыми указателями не является безопасной в идеологии Rust, то код создания поверхности будет помечен ключевым словом <code>unsafe</code>. Однако не стоит относится к <code>unsafe</code> как к монстру, потому как это всего лишь контракт между компилятором и программистом, где программист берет на себя ответственность за поведение программы. И да, возможно в некоторых ситуациях программа может завершиться не корректно.</p>
+<p>Изменим строчку создания окна, перименовав переменную <code>_window</code> на <code>window</code> и добавим код создания поверхности.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    ...
+    let window = wb.build(&amp;event_loop).unwrap();
+    // Create a EGL surface
+    let surface = unsafe {
+        let window_handle = match window.raw_window_handle() {
+            RawWindowHandle::Xlib(handle) =&gt; {
+                handle.window as egl::NativeWindowType
+            }
+            RawWindowHandle::Xcb(handle) =&gt; {
+                handle.window as egl::NativeWindowType
+            }
+            RawWindowHandle::Wayland(handle) =&gt; {
+                handle.surface as egl::NativeWindowType
+            }
+            _ =&gt; {
+                panic!(&quot;Other handle type&quot;);
+            }
+        };
+
+        egl.create_window_surface(display, config, window_handle, None)
+            .expect(&quot;unable to create an EGL surface&quot;)
+    };
+<span class="boring">}
+</span></code></pre></pre>
+<p>Разберемся с этим кодом. Как я уже упамянул выше, код создания поверхности помечен ключевым словом <code>unsafe</code> и блок кода в фигурных скобках оканчивается <code>;</code>. Это говорит компилятору о том что весь этот блок является выражением, которое возвращает значение. Чтобы было более понятнее о конструкции <code>unsafe</code> и так как я изначально пишу эту главу на Linux, то я не обрабатывал другие оконные системы других операционные систем. Поэтому на Linux этот код будет нормально, однако он завершится паникой на OSX, Windows и других системах. Обработку других операционных систем будет добавлена по мере написания книги.</p>
+<p>Итак мы получили указатель на окно и привели его к совместимому типу <code>egl::NativeWindowType</code> из пакета <code>khronos-egl</code>. Последней строчкой мы вызвали код создания поверхности которая будет ассоциирована с дисплеем и нашим окном, в соответствии с конфигурацией.</p>
+<p>Остался последний шаг перед использованием OpenGL ES. Присоединить EGL контекст к поверхностям. 
+Добавьте чуть ниже одну строчку:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>egl.make_current(display, Some(surface), Some(surface), Some(ctx))
+    .expect(&quot;unable to bind the context&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Вся подготовительная работа завершена. Теперь мы можем использовать <code>gl</code> функции!</p>
+<h2><a class="header" href="#Заполним-цветом-окно" id="Заполним-цветом-окно">Заполним цветом окно</a></h2>
+<p>Для работы с <code>gl</code> функциями нам потребуется пакет <code>opengles</code>. При выборе пакета я руководствовался в первую очередь поставленными перед этой книгой задачами. Есть также другие пакеты обертки над OpenGL и OpenGL ES. Но часть из них имеет более высо-уровневый АПИ, который не дас достаточно четкого понимания работы с OpenGL. Другая часть является действительно библиотеками обертками, при использовании которых утонули бы в <code>unsafe</code> конструкциях тем самым затруднив понимание деталей взаимодействия с OpenGL.</p>
+<p>Чтобы добавить пакет <code>opengles</code> в проект введите команду в терминале из корня проекта:</p>
+<pre><code class="language-txt">&gt; cargo add opengles
+</code></pre>
+<p>Также добавим в начало файла <code>main.rs</code> строчку которая позволит использовать GL вызовы с короткими именами. Я могу предположить что автор пакета <code>opengles</code> планировал также добавить поддержку других версий OpenGL ES. </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use opengles::glesv2 as gl;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Перед входом в цикл обработки событий окна выполним еще несколько команд, которые при первом запуске очистят содержимое окна. Для этого нам нужно будет установить цвет которым мы будем заполнять наше окно во время очистки, очистить EGL поверхность и перенаправив буфер цвета в окно.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>gl::clear_color(0.3, 0.3, 0.5, 1.0);
+
+gl::clear(gl::GL_COLOR_BUFFER_BIT);
+
+egl.swap_buffers(display, surface)
+    .expect(&quot;unable to post EGL context&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Самое время запустить наш код!</p>
+<pre><code class="language-txt">&gt; cargo run
+</code></pre>
+<p>Если все собралось без ошибок, то вы увидите окно заполненное синим цветом.</p>
+<blockquote>
+<p>Если вы попробуете перемещать любое другое окно поверх окна нашего приложения, то вы заметите что наше окно не обновляется. Я надеюсь вам не составит больших усилий исправить это.</p>
+</blockquote>
+<p>Возможно, сейчас вы подумаете о том что &quot;мы написали такое большое количество кода и получили всего-лишь синее окно&quot;. Когда я писал OpenGL-приложение в первый раз в жизни, я тоже был смущен этим, и даже бросил на какое-то время OpenGL. </p>
+<p>Важно понимать что в этой главе мы подгтовили фундамент для дальнейшей работы c OpenGL. Проведя небольшой рефакторинг, и распределив сервисный код по модулям вашего приложения, он станет более лаконичным.</p>
+<p>Код этой главы доступен в основном <a href="https://github.com/angular-rust/opengles-tutorial/tree/main/lesson-02">репозитории книги</a>.</p>
+<p>Далее, длинный и &quot;современный&quot; способ нарисовать <a href="v2/03-compiling-shaders.html">треугольник на экране</a>.</p>
+<h1><a class="header" href="#Компиляция-шейдеров" id="Компиляция-шейдеров">Компиляция шейдеров</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Треугольник" id="Треугольник">Треугольник</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Цветной-треугольник" id="Цветной-треугольник">Цветной треугольник</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#gl-генератор" id="gl-генератор">GL генератор</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Основные-ресурсы" id="Основные-ресурсы">Основные ресурсы</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Использование-библиотеки-failure" id="Использование-библиотеки-failure">Использование библиотеки Failure</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Формат-аттрибутов-вершин" id="Формат-аттрибутов-вершин">Формат аттрибутов вершин</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Процедурные-макросы" id="Процедурные-макросы">Процедурные макросы</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Типы-данных-вершин" id="Типы-данных-вершин">Типы данных вершин</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Буферы" id="Буферы">Буферы</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#Треугольник-и-преобразования" id="Треугольник-и-преобразования">Треугольник и преобразования</a></h1>
+<p>TODO:</p>
+<h1><a class="header" href="#opengl-es-20-1" id="opengl-es-20-1">OpenGL ES 2.0</a></h1>
+<p>TODO:</p>
+<p><a href="v2/00-setup.html">Настройка с нуля</a></p>
+<h1><a class="header" href="#Шэйдеры" id="Шэйдеры">Шэйдеры</a></h1>
+<h1><a class="header" href="#Заключение" id="Заключение">Заключение</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

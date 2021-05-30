@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>OpenGL контекст - Rust OpenGL ES tutorial</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Предисловие</a></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">1.</strong> OpenGL ES 2.0</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../v2/00-setup.html"><strong aria-hidden="true">1.1.</strong> С нуля</a></li><li class="chapter-item expanded "><a href="../v2/01-window.html"><strong aria-hidden="true">1.2.</strong> Cоздание окна</a></li><li class="chapter-item expanded "><a href="../v2/02-opengles-context.html" class="active"><strong aria-hidden="true">1.3.</strong> OpenGL контекст</a></li><li class="chapter-item expanded "><a href="../v2/03-compiling-shaders.html"><strong aria-hidden="true">1.4.</strong> Компиляция шейдеров</a></li><li class="chapter-item expanded "><a href="../v2/04-triangle.html"><strong aria-hidden="true">1.5.</strong> Треугольник</a></li><li class="chapter-item expanded "><a href="../v2/05-triangle-colors.html"><strong aria-hidden="true">1.6.</strong> Цветной треугольник</a></li><li class="chapter-item expanded "><a href="../v2/06-gl-generator.html"><strong aria-hidden="true">1.7.</strong> GL генератор</a></li><li class="chapter-item expanded "><a href="../v2/07-basic-resources.html"><strong aria-hidden="true">1.8.</strong> Основные ресурсы</a></li><li class="chapter-item expanded "><a href="../v2/08-failure.html"><strong aria-hidden="true">1.9.</strong> Использование библиотеки Failure</a></li><li class="chapter-item expanded "><a href="../v2/09-vertex-attribute-format.html"><strong aria-hidden="true">1.10.</strong> Формат аттрибутов вершин</a></li><li class="chapter-item expanded "><a href="../v2/10-procedural-macros.html"><strong aria-hidden="true">1.11.</strong> Процедурные макросы</a></li><li class="chapter-item expanded "><a href="../v2/11-vertex-data-types.html"><strong aria-hidden="true">1.12.</strong> Типы данных вершин</a></li><li class="chapter-item expanded "><a href="../v2/12-buffers.html"><strong aria-hidden="true">1.13.</strong> Буферы</a></li><li class="chapter-item expanded "><a href="../v2/13-safe-triangle-nalgebra.html"><strong aria-hidden="true">1.14.</strong> Треугольник и преобразования</a></li></ol></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">2.</strong> OpenGL ES 3.0</a></li><li class="chapter-item expanded "><a href="../shaders/intro.html"><strong aria-hidden="true">3.</strong> Шэйдеры GLSL</a></li><li class="chapter-item expanded affix "><a href="../conclusion.html">Заключение</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Rust OpenGL ES tutorial</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#opengl-контекст" id="opengl-контекст">OpenGL контекст</a></h1>
+<blockquote>
+<p><a href="01-window.html">Ранее</a>, мы создали окно используя <code>winit</code> и научились обрабатывать события окна.</p>
+</blockquote>
+<p>В этой главе мы продолжим изучать OpengGLES, подключим OpenGL контекст в нашему окну и покрасим его в синий цвет.</p>
+<h2><a class="header" href="#opengl" id="opengl">OpenGL</a></h2>
+<p>Если вы будете <a href="https://crates.io/search?q=opengl">искать OpenGL на crates.io</a>, вы сможете найти мноцество библиотек которые занимаются взаимодействием с OpenGL, такие как <code>glium</code>, <code>glitter</code> и может быть другие.</p>
+<p>Цель этой книги, показать вам детали взаимодействия с OpenGL на более низком уровне. Это не говорит что всю работу мы будем делать самостоятельно!</p>
+<h2><a class="header" href="#gl-и-gl_generator" id="gl-и-gl_generator">gl и gl_generator</a></h2>
+<p>Краеугольный камень многих проектов OpenGL более высокого уровня в том что они содержат три пакета:</p>
+<ul>
+<li><code>khronos_api</code> - этот пакет содержит файлы XML для различных API-интерфейсов Khronos, таких как EGL, WGL, GLX, GL и другие.</li>
+<li><code>gl_generator</code> - это инструмент для генерации привязок кода Rust из XML-файлов <code>khronos_api</code>. Думайте об этом как о своем собственном настраиваемом генераторе для загрузки OpenGL (что-то вроде <a href="http://glew.sourceforge.net/">GLEW</a>).</li>
+<li><code>gl</code> - это API OpenGL, уже созданный с использованием <code>gl_generator</code>. Это почти правильно. На деле, <code>gl</code> код генерируется каждый раз когда вы собираете свой проект. Более детально мы обсудим это позже.</li>
+</ul>
+<p>Как я уже сказал, наша задача изучить OpenGL ES с использованием Rust на достаточно низком уровне. Но это воовсе не означает что нужно использовать эти низкоуровневые библиотеки, хоть некоторые из них мы и будем использовать. Однако я преверженнец достаточно чистого кода, и поэтому мы будем использовать разные из них. При поиске низкоуровневых библиотек для работы c OpenGL я натыкался на библиотеки обвязки - <code>wrappers</code>, которые просто дают доступ к API, но так как это не входит в их задачи, они не заботятся об удобстве использования.</p>
+<h2><a class="header" href="#Библиотека-khronos-egl" id="Библиотека-khronos-egl">Библиотека khronos-egl</a></h2>
+<p>EGL управляет графическим контекстом, привязкой поверхностей/буфер, синхронизацией рендеринга и обеспечивает &quot;высокопроизводительный, ускоренный, смешанный режим 2D и 3D рендеринга с использованием других API Khronos&quot;.</p>
+<p>Давайте добавим пакет <code>khronos-egl</code> в наш проект в секцию <code>[dependencies]</code> в файл <code>Cargo.toml</code>:</p>
+<p><em>Cargo.toml, incomplete</em></p>
+<pre><code class="language-toml">[dependencies]
+egl = {package = &quot;khronos-egl&quot;, version = &quot;4.1&quot;, features = [&quot;dynamic&quot;] }
+</code></pre>
+<p>Нам буlет удобнее общаться с EGL с помошью короткого имени <code>egl</code>, поэтому мы сделали ссылку на пакет <code>khronos-egl</code>, указали версию и свойства которые позволяют загружать во время исполнения динамическую библиотеку <code>libEGL.so</code>. </p>
+<p>Чуть ниже нам потребуется Arc, для того чтобы безопасно передавать между потоками EGL структуру.
+Поэтому добавим следующие строчки в начало нашего <code>main.rs</code> файла:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::sync::Arc;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Также инициализируем наш EGL объект, добавив в начало функции <code>main</code> следующий код:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    // EGL setup here
+    let egl = unsafe {
+        Arc::new(
+            egl::DynamicInstance::&lt;egl::EGL1_4&gt;::load_required()
+                .expect(&quot;unable to load libEGL.so&quot;),
+        )
+    };
+
+    // Setup OpenGL ES API
+    egl.bind_api(egl::OPENGL_ES_API)
+        .expect(&quot;unable to select OpenGL ES API&quot;); // for OpenGL ES
+    ...
+</code></pre></pre>
+<p>Давайте разберем на крупицы код, который мы добавили.</p>
+<p>Первой конструкцией мы создали объект EGL, попытавшись во время исполнения программы загрузить динамическую библиотеку <code>libEGL.so</code> (для Linux). 
+Далее мы указали этой библиотеке какой уровень АПИ мы будем использовать. В нашем случае мы передали аргумент <code>egl::OPENGL_ES_API</code> в функцию <code>bind_api</code>. Также возможно туда передать константу <code>egl::OPENGL_API</code>, но это не входит в задачи этой книги.</p>
+<h2><a class="header" href="#Просмотр-документации-по-зависимости-локально" id="Просмотр-документации-по-зависимости-локально">Просмотр документации по зависимости локально</a></h2>
+<p>Мы можем попросить <code>cargo</code> сформировать и открыть документацию на любой пакет, от которого зависит наш проект:</p>
+<pre><code class="language-txt">cargo doc -p khronos-egl --no-deps --open
+</code></pre>
+<ul>
+<li><code>-p khronos-egl</code> - это сокращение для <code>--package khronos-egl</code>, указывает, что нам нужна документация для этого пакета </li>
+<li><code>--no-deps</code> отключает рекурсивную документацию для всех зависимостей khronos-egl. Мы хотим отключить это в Windows, потому что <code>gl</code> транзитивно зависит от других пакетов, и создание документации для них заняло бы слишком много времени. </li>
+<li><code>--open</code> открывает сгенерированную документацию в окне браузера.</li>
+</ul>
+<h2><a class="header" href="#Создание-графического-контекста" id="Создание-графического-контекста">Создание графического контекста</a></h2>
+<p>После того как вы указали какой API вы будете использовать совместно с EGL время создать графический контекст.
+Для начала нам нужна будет информация о нашем дисплее. Мы не будем настраивать его, вместо этого просто получим информацию о дисплее по умолчанию и инициализируем его. Добавьте следующий код после вызова <code>egl.bind_api</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Setup Display
+    let display = egl
+        .get_display(egl::DEFAULT_DISPLAY)
+        .expect(&quot;unable to get display&quot;);
+    egl.initialize(display).expect(&quot;unable to init EGL&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Чтобы работать с графическим контекстом нам потребуется настроить его. В данном случае параметрами дисплея являются аттрибуты графического буфера. Более подробно значение каждого из атрибутов мы рассмотрим в следующих главах. А сейчас просто объявим их добавив следующий код:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Create context
+    let attrib_list = [
+        egl::BUFFER_SIZE,
+        16,
+        egl::DEPTH_SIZE,
+        16,
+        egl::STENCIL_SIZE,
+        0,
+        egl::SURFACE_TYPE,
+        egl::WINDOW_BIT,
+        egl::NONE,
+    ];
+<span class="boring">}
+</span></code></pre></pre>
+<p>Мы объявили достаточно простые атрибуты нашего графического буфера, но это не говорит что система может их нам предоставить. Так что давайте запросим у графической подсистемы конфигурацию которая будет соответствовать этим атрибутам. Добавляем следующие строчки:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Get the matching configuration.
+    let config = egl
+        .choose_first_config(display, &amp;attrib_list)
+        .expect(&quot;unable to choose EGL configuration&quot;)
+        .expect(&quot;no EGL configuration found&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Теперь у нас есть конфигурация графического буфера, совместимого с запрошенными нами атрибутами.
+Самое время создать графический контекст. У контекста как и у графического буфера также есть свой набор аттрибутов. Как и на что они влияют, мы рассмотрим в следующих главах. Сейчас же мы создадим графический контекст по умолчанию. То есть с пустым набором аттрибутов. Добавим ниже следующий строчки:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let ctx_attribs = [egl::NONE];
+    let ctx = egl
+        .create_context(display, config, None, &amp;ctx_attribs)
+        .expect(&quot;unable to create EGL context&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<h1><a class="header" href="#Создание-egl-поверхности" id="Создание-egl-поверхности">Создание EGL поверхности</a></h1>
+<p>В этой главе мы уже создали графический контекст, но этот графический контекст ничего не знает об окне в котором он должен быть отображен. Для того чтобы отобразить нашу графику в окне нам нужно будет привязать графический контекст к окну. И так чтобы создать поверхность окна, нам потребуется графический контекст, ссылка на окно и экран. В предыдущей <a href="01-window.html">главе</a> мы создали окно с помошью <code>winit</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _window = wb.build(&amp;event_loop).unwrap();
+<span class="boring">}
+</span></code></pre></pre>
+<h3><a class="header" href="#Указатель-на-окно" id="Указатель-на-окно">Указатель на окно</a></h3>
+<p>Для того чтобы передать ссылку на окно, нам потребуется сырой (<code>raw</code>) указатель на него. То есть нам потребуется платформо зависимимый указатель на оконной системы. В случае с Linux это указатель на X11 или Wayland окно. Уже немного сложнее.</p>
+<p>Для того чтобы удобно работать с сущностями оконной системы в Rust существует пакет <code>raw-window-handle</code>, который также является зависимостью для <code>winit</code>. Добавим его в наш проект:</p>
+<pre><code class="language-txt">&gt; cargo add raw-window-handle
+</code></pre>
+<p>И укажем что бы будем использовать сущности из этого пакета, добавив в начало нашего <code>main.rs</code> файла:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use raw_window_handle::{HasRawWindowHandle, RawWindowHandle};
+<span class="boring">}
+</span></code></pre></pre>
+<p>Так как работа с сырыми указателями не является безопасной в идеологии Rust, то код создания поверхности будет помечен ключевым словом <code>unsafe</code>. Однако не стоит относится к <code>unsafe</code> как к монстру, потому как это всего лишь контракт между компилятором и программистом, где программист берет на себя ответственность за поведение программы. И да, возможно в некоторых ситуациях программа может завершиться не корректно.</p>
+<p>Изменим строчку создания окна, перименовав переменную <code>_window</code> на <code>window</code> и добавим код создания поверхности.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    ...
+    let window = wb.build(&amp;event_loop).unwrap();
+    // Create a EGL surface
+    let surface = unsafe {
+        let window_handle = match window.raw_window_handle() {
+            RawWindowHandle::Xlib(handle) =&gt; {
+                handle.window as egl::NativeWindowType
+            }
+            RawWindowHandle::Xcb(handle) =&gt; {
+                handle.window as egl::NativeWindowType
+            }
+            RawWindowHandle::Wayland(handle) =&gt; {
+                handle.surface as egl::NativeWindowType
+            }
+            _ =&gt; {
+                panic!(&quot;Other handle type&quot;);
+            }
+        };
+
+        egl.create_window_surface(display, config, window_handle, None)
+            .expect(&quot;unable to create an EGL surface&quot;)
+    };
+<span class="boring">}
+</span></code></pre></pre>
+<p>Разберемся с этим кодом. Как я уже упамянул выше, код создания поверхности помечен ключевым словом <code>unsafe</code> и блок кода в фигурных скобках оканчивается <code>;</code>. Это говорит компилятору о том что весь этот блок является выражением, которое возвращает значение. Чтобы было более понятнее о конструкции <code>unsafe</code> и так как я изначально пишу эту главу на Linux, то я не обрабатывал другие оконные системы других операционные систем. Поэтому на Linux этот код будет нормально, однако он завершится паникой на OSX, Windows и других системах. Обработку других операционных систем будет добавлена по мере написания книги.</p>
+<p>Итак мы получили указатель на окно и привели его к совместимому типу <code>egl::NativeWindowType</code> из пакета <code>khronos-egl</code>. Последней строчкой мы вызвали код создания поверхности которая будет ассоциирована с дисплеем и нашим окном, в соответствии с конфигурацией.</p>
+<p>Остался последний шаг перед использованием OpenGL ES. Присоединить EGL контекст к поверхностям. 
+Добавьте чуть ниже одну строчку:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>egl.make_current(display, Some(surface), Some(surface), Some(ctx))
+    .expect(&quot;unable to bind the context&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Вся подготовительная работа завершена. Теперь мы можем использовать <code>gl</code> функции!</p>
+<h2><a class="header" href="#Заполним-цветом-окно" id="Заполним-цветом-окно">Заполним цветом окно</a></h2>
+<p>Для работы с <code>gl</code> функциями нам потребуется пакет <code>opengles</code>. При выборе пакета я руководствовался в первую очередь поставленными перед этой книгой задачами. Есть также другие пакеты обертки над OpenGL и OpenGL ES. Но часть из них имеет более высо-уровневый АПИ, который не дас достаточно четкого понимания работы с OpenGL. Другая часть является действительно библиотеками обертками, при использовании которых утонули бы в <code>unsafe</code> конструкциях тем самым затруднив понимание деталей взаимодействия с OpenGL.</p>
+<p>Чтобы добавить пакет <code>opengles</code> в проект введите команду в терминале из корня проекта:</p>
+<pre><code class="language-txt">&gt; cargo add opengles
+</code></pre>
+<p>Также добавим в начало файла <code>main.rs</code> строчку которая позволит использовать GL вызовы с короткими именами. Я могу предположить что автор пакета <code>opengles</code> планировал также добавить поддержку других версий OpenGL ES. </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use opengles::glesv2 as gl;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Перед входом в цикл обработки событий окна выполним еще несколько команд, которые при первом запуске очистят содержимое окна. Для этого нам нужно будет установить цвет которым мы будем заполнять наше окно во время очистки, очистить EGL поверхность и перенаправив буфер цвета в окно.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>gl::clear_color(0.3, 0.3, 0.5, 1.0);
+
+gl::clear(gl::GL_COLOR_BUFFER_BIT);
+
+egl.swap_buffers(display, surface)
+    .expect(&quot;unable to post EGL context&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Самое время запустить наш код!</p>
+<pre><code class="language-txt">&gt; cargo run
+</code></pre>
+<p>Если все собралось без ошибок, то вы увидите окно заполненное синим цветом.</p>
+<blockquote>
+<p>Если вы попробуете перемещать любое другое окно поверх окна нашего приложения, то вы заметите что наше окно не обновляется. Я надеюсь вам не составит больших усилий исправить это.</p>
+</blockquote>
+<p>Возможно, сейчас вы подумаете о том что &quot;мы написали такое большое количество кода и получили всего-лишь синее окно&quot;. Когда я писал OpenGL-приложение в первый раз в жизни, я тоже был смущен этим, и даже бросил на какое-то время OpenGL. </p>
+<p>Важно понимать что в этой главе мы подгтовили фундамент для дальнейшей работы c OpenGL. Проведя небольшой рефакторинг, и распределив сервисный код по модулям вашего приложения, он станет более лаконичным.</p>
+<p>Код этой главы доступен в основном <a href="https://github.com/angular-rust/opengles-tutorial/tree/main/lesson-02">репозитории книги</a>.</p>
+<p>Далее, длинный и &quot;современный&quot; способ нарисовать <a href="03-compiling-shaders.html">треугольник на экране</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../v2/01-window.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../v2/03-compiling-shaders.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../v2/01-window.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../v2/03-compiling-shaders.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
