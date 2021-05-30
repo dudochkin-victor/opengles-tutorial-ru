@@ -2,7 +2,7 @@
 
 [Предисловие](./preface.md)
 - [OpenGL ES 2.0](./v2/intro.md)
-    - [С нуля](./v2/00-setup.md)
+    - [Настройка с нуля](./v2/00-setup.md)
     - [Cоздание окна](./v2/01-window.md)
     - [OpenGL контекст](./v2/02-opengles-context.md)
     - [Компиляция шейдеров](./v2/03-compiling-shaders.md)

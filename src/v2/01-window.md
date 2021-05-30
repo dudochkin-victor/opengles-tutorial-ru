@@ -144,7 +144,7 @@ fn main() {
 Возможно вы не сразу заметите созданное окно, потому что мы ничего не отображали в нем.
 
 ```txt
-   Compiling lesson-01-window v0.1.0 (/home/opengles-tutorial/opengles-lesson)
+   Compiling lesson-01-window v0.1.0 (/home/opengles-tutorial)
     Finished dev [unoptimized + debuginfo] target(s) in 9.31s
      Running `/home/opengles-tutorial/target/debug/lesson-01-window`
 ```
