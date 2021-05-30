@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Предисловие</a></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">1.</strong> OpenGL ES 2.0</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../v2/00-setup.html"><strong aria-hidden="true">1.1.</strong> С нуля</a></li><li class="chapter-item expanded "><a href="../v2/01-window.html"><strong aria-hidden="true">1.2.</strong> Cоздание окна</a></li><li class="chapter-item expanded "><a href="../v2/02-opengles-context.html"><strong aria-hidden="true">1.3.</strong> OpenGL контекст</a></li><li class="chapter-item expanded "><a href="../v2/03-compiling-shaders.html" class="active"><strong aria-hidden="true">1.4.</strong> Компиляция шейдеров</a></li><li class="chapter-item expanded "><a href="../v2/04-triangle.html"><strong aria-hidden="true">1.5.</strong> Треугольник</a></li><li class="chapter-item expanded "><a href="../v2/05-triangle-colors.html"><strong aria-hidden="true">1.6.</strong> Цветной треугольник</a></li><li class="chapter-item expanded "><a href="../v2/06-gl-generator.html"><strong aria-hidden="true">1.7.</strong> GL генератор</a></li><li class="chapter-item expanded "><a href="../v2/07-basic-resources.html"><strong aria-hidden="true">1.8.</strong> Основные ресурсы</a></li><li class="chapter-item expanded "><a href="../v2/08-failure.html"><strong aria-hidden="true">1.9.</strong> Использование библиотеки Failure</a></li><li class="chapter-item expanded "><a href="../v2/09-vertex-attribute-format.html"><strong aria-hidden="true">1.10.</strong> Формат аттрибутов вершин</a></li><li class="chapter-item expanded "><a href="../v2/10-procedural-macros.html"><strong aria-hidden="true">1.11.</strong> Процедурные макросы</a></li><li class="chapter-item expanded "><a href="../v2/11-vertex-data-types.html"><strong aria-hidden="true">1.12.</strong> Типы данных вершин</a></li><li class="chapter-item expanded "><a href="../v2/12-buffers.html"><strong aria-hidden="true">1.13.</strong> Буферы</a></li><li class="chapter-item expanded "><a href="../v2/13-safe-triangle-nalgebra.html"><strong aria-hidden="true">1.14.</strong> Треугольник и преобразования</a></li></ol></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">2.</strong> OpenGL ES 3.0</a></li><li class="chapter-item expanded "><a href="../shaders/intro.html"><strong aria-hidden="true">3.</strong> Шэйдеры GLSL</a></li><li class="chapter-item expanded affix "><a href="../conclusion.html">Заключение</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Предисловие</a></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">1.</strong> OpenGL ES 2.0</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../v2/00-setup.html"><strong aria-hidden="true">1.1.</strong> Настройка с нуля</a></li><li class="chapter-item expanded "><a href="../v2/01-window.html"><strong aria-hidden="true">1.2.</strong> Cоздание окна</a></li><li class="chapter-item expanded "><a href="../v2/02-opengles-context.html"><strong aria-hidden="true">1.3.</strong> OpenGL контекст</a></li><li class="chapter-item expanded "><a href="../v2/03-compiling-shaders.html" class="active"><strong aria-hidden="true">1.4.</strong> Компиляция шейдеров</a></li><li class="chapter-item expanded "><a href="../v2/04-triangle.html"><strong aria-hidden="true">1.5.</strong> Треугольник</a></li><li class="chapter-item expanded "><a href="../v2/05-triangle-colors.html"><strong aria-hidden="true">1.6.</strong> Цветной треугольник</a></li><li class="chapter-item expanded "><a href="../v2/06-gl-generator.html"><strong aria-hidden="true">1.7.</strong> GL генератор</a></li><li class="chapter-item expanded "><a href="../v2/07-basic-resources.html"><strong aria-hidden="true">1.8.</strong> Основные ресурсы</a></li><li class="chapter-item expanded "><a href="../v2/08-failure.html"><strong aria-hidden="true">1.9.</strong> Использование библиотеки Failure</a></li><li class="chapter-item expanded "><a href="../v2/09-vertex-attribute-format.html"><strong aria-hidden="true">1.10.</strong> Формат аттрибутов вершин</a></li><li class="chapter-item expanded "><a href="../v2/10-procedural-macros.html"><strong aria-hidden="true">1.11.</strong> Процедурные макросы</a></li><li class="chapter-item expanded "><a href="../v2/11-vertex-data-types.html"><strong aria-hidden="true">1.12.</strong> Типы данных вершин</a></li><li class="chapter-item expanded "><a href="../v2/12-buffers.html"><strong aria-hidden="true">1.13.</strong> Буферы</a></li><li class="chapter-item expanded "><a href="../v2/13-safe-triangle-nalgebra.html"><strong aria-hidden="true">1.14.</strong> Треугольник и преобразования</a></li></ol></li><li class="chapter-item expanded "><a href="../v2/intro.html"><strong aria-hidden="true">2.</strong> OpenGL ES 3.0</a></li><li class="chapter-item expanded "><a href="../shaders/intro.html"><strong aria-hidden="true">3.</strong> Шэйдеры GLSL</a></li><li class="chapter-item expanded affix "><a href="../conclusion.html">Заключение</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -164,7 +164,336 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#Компиляция-шейдеров" id="Компиляция-шейдеров">Компиляция шейдеров</a></h1>
-<p>TODO:</p>
+<blockquote>
+<p><a href="02-opengles-context.html">Ранее</a>, мы подключили OpenGL ES контекст к окну, чтобы обрабатывать события от пользователя и выводить графику.</p>
+</blockquote>
+<p>В этой главе, мы будем работать над рендерингом классического треугольника OpenGL. Классический, потому что каждый учебник OpenGL делает это.</p>
+<p>Но сначала мы узнаем, как создавать безопасные абстракции в Rust, и создадим инструменты для компиляции шейдера и компоновки программы. </p>
+<h2><a class="header" href="#Современный-opengl" id="Современный-opengl">&quot;Современный&quot; OpenGL</a></h2>
+<p>Мы будем использовать то, что называется &quot;современным OpenGL&quot;. Оказывается, давным-давно это было не так современно. Мы не будем обсуждать здесь графический конвейер с самого начала: вместо этого я предлагаю вам воспользоваться другим &quot;современным учебником OpenGL&quot;. Я буду использовать <a href="https://learnopengl.com/">это замечательное руководство в качестве основы</a>.
+Эта глава будет посвящена реализации на Rust урока <a href="https://learnopengl.com/Getting-started/Hello-Triangle">&quot;Hello Triangle&quot;</a>.</p>
+<h2><a class="header" href="#Дополнительная-настройка-контекста-opengl" id="Дополнительная-настройка-контекста-opengl">Дополнительная настройка контекста OpenGL</a></h2>
+<p>В <a href="02-opengles-context.html">пердыдущей главе</a> мы говорили о создании окна. В основном мы так и поступали, за исключением того, что я забыл кое-что.</p>
+<p>Во-первых, нам нужно указать минимальную версию OpenGL для использования. В нашем случае это можно сделать с помощью атрибутов EGL контекста: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let ctx_attribs = [egl::NONE];
+    let ctx = egl
+        .create_context(display, config, None, &amp;ctx_attribs)
+        .expect(&quot;unable to create EGL context&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Как вы можете видеть, мы задали пустой список аттрибутов EGL контекста. Если не настраивать аттрибуты контекста, то графическая подсистема возьмет минимальную версию OpenGL ES. В моем случае это OpenGL ES 1.1.</p>
+<p>Чтобы увидеть как это работает, добавьте несколько строк после вызова команды <code>egl.make_current</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>println!(
+    &quot;GL_RENDERER = {}&quot;,
+    gl::get_string(gl::GL_RENDERER).unwrap_or(&quot;Unknown&quot;.into())
+);
+println!(
+    &quot;GL_VERSION = {}&quot;,
+    gl::get_string(gl::GL_VERSION).unwrap_or(&quot;Unknown&quot;.into())
+);
+println!(
+    &quot;GL_VENDOR = {}&quot;,
+    gl::get_string(gl::GL_VENDOR).unwrap_or(&quot;Unknown&quot;.into())
+);
+println!(
+    &quot;GL_EXTENSIONS = {}&quot;,
+    gl::get_string(gl::GL_EXTENSIONS).unwrap_or(&quot;Unknown&quot;.into())
+);
+<span class="boring">}
+</span></code></pre></pre>
+<p>В моем случае это выглядит вот так:</p>
+<pre><code class="language-txt">&gt; cargo run
+   Compiling lesson-02-opengl-context v0.1.0 (/home/opengles-tutorial)
+    Finished dev [unoptimized + debuginfo] target(s) in 7.27s
+     Running `/home/opengles-tutorial/target/debug/lesson-02-opengl-context`
+GL_RENDERER = GeForce GTX 1050/PCIe/SSE2
+GL_VERSION = OpenGL ES 1.1 NVIDIA 460.67
+GL_VENDOR = NVIDIA Corporation
+GL_EXTENSIONS = GL_EXT_debug_label GL_EXT_map_buffer_range GL_EXT_robustness 
+GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_s3tc 
+GL_EXT_texture_format_BGRA8888 GL_KHR_debug GL_EXT_memory_object 
+GL_EXT_memory_object_fd GL_NV_memory_object_sparse GL_EXT_semaphore 
+GL_EXT_semaphore_fd GL_NV_timeline_semaphore GL_NV_memory_attachment 
+GL_NV_texture_compression_s3tc GL_OES_compressed_ETC1_RGB8_texture 
+GL_EXT_compressed_ETC1_RGB8_sub_texture GL_OES_compressed_paletted_texture 
+GL_OES_draw_texture GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_sync 
+GL_OES_element_index_uint GL_OES_extended_matrix_palette GL_OES_fbo_render_mipmap 
+GL_OES_framebuffer_object GL_OES_matrix_get GL_OES_matrix_palette 
+GL_OES_packed_depth_stencil GL_OES_point_size_array GL_OES_point_sprite 
+GL_OES_rgb8_rgba8 GL_OES_read_format GL_OES_stencil8 GL_OES_texture_cube_map 
+GL_OES_texture_npot GL_OES_vertex_half_float
+</code></pre>
+<p>Эта книга нацелена на изучение OpenGL ES версии 2.0 и выше. Поэтому настроим аттрибуты контекста, изменив всего одну строчку:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let ctx_attribs = [egl::CONTEXT_CLIENT_VERSION, 2, egl::NONE];
+<span class="boring">}
+</span></code></pre></pre>
+<p>Теперь вывод будет совершенно иным:</p>
+<pre><code class="language-txt">В моем случае это выглядит вот так:
+
+```txt
+&gt; cargo run
+   Compiling lesson-02-opengl-context v0.1.0 (/home/opengles-tutorial)
+    Finished dev [unoptimized + debuginfo] target(s) in 7.27s
+     Running `/home/opengles-tutorial/target/debug/lesson-02-opengl-context`
+GL_RENDERER = GeForce GTX 1050/PCIe/SSE2
+GL_VERSION = OpenGL ES 3.2 NVIDIA 460.67
+...
+</code></pre>
+<p>Помимо того, что теперь мы можем работать с OpenGL ES 3.2, также изменились поддерживаемые OpenGL расширения и их количество. Пока что примите OpenGL расширения как данность, мы обсудим их в следующих главах.</p>
+<p>Во-вторых, нам нужно настроить область просмотра. Мы можем сделать это один раз, непосредственно перед первым вызовом <code>gl::clear_color</code>: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>gl::viewport(0, 0, 900, 700);
+<span class="boring">}
+</span></code></pre></pre>
+<h2><a class="header" href="#Шейдеры" id="Шейдеры">Шейдеры</a></h2>
+<p>Мы создадим вспомогательную функцию для компиляции шейдера из строки, а затем другую функцию для связывания скомпилированных шейдеров с программой. </p>
+<p>Сначала попробуйте добавить этот код в перед функцийе <code>main</code> в файл <code>main.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn shader_from_source(source: &amp;str) -&gt; u32 {
+    // continue here
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Учитывая этот код, функция <code>shader_from_source</code> должна возвращать идентификатор шейдера. </p>
+<p>Однако создание шейдера может завершиться неудачно, и мы можем захотеть получить сообщение об ошибке.
+Для этого мы изменим тип возвращаемого значения на <code>Result&lt;u32, String&gt;</code>. Если компиляция шедера завершится удачно, то мы получим идентификатор шейдера, иначе мы сможем извлечь сообщение об ошибке.</p>
+<p>Начнем с получения id объекта шейдера:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn shader_from_source(source: &amp;str) -&gt; Result&lt;u32, String&gt; {
+    let id = gl::create_shader(gl::GL_VERTEX_SHADER);
+
+    // continue here
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Ха! Нам нужно указать тип шейдера. Давайте улучшим сигнатуру функции и добавим к ней тип шейдера. <code>type</code> - зарезервированное ключевое слово в Rust, но мы можем назвать его<code> kind</code>: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn shader_from_source(
+    source: &amp;str,
+    kind: kind: gl::GLenum
+) -&gt; Result&lt;Result&lt;u32, String&gt;&gt; {
+    let id = gl::create_shader(kind);
+
+    // continue here
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Затем нам нужно установить источник для объекта шейдера, используя обертку к <a href="http://docs.gl/gl4/glShaderSource">glShaderSource</a> функции. 
+Мы можем установить источник шейдера и скомпилировать его: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    gl::shader_source(id, source.as_bytes());
+    gl::compile_shader(id);
+
+// continue here
+<span class="boring">}
+</span></code></pre></pre>
+<p>Мы могли бы вернуть <code>Ok(id)</code> сейчас и двигаться дальше, однако нам <strong>реально</strong> нужно видеть правильное сообщение об ошибке, если шейдер не компилируется. </p>
+<p>Таким образом, получаем статус компиляции шейдера: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let success = gl::get_shaderiv(id, gl::GL_COMPILE_STATUS);
+<span class="boring">}
+</span></code></pre></pre>
+<p>И если это <code>0</code>, мы вернем строку с ошибкой, иначе <code>Ok(id)</code>: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>if success == 0 {
+    // continue here
+}
+
+Ok(id)
+<span class="boring">}
+</span></code></pre></pre>
+<p>Нам нужно будет записать возвращенную ошибку в буфер, поэтому нам нужно знать требуемую длину этого буфера. </p>
+<p>Мы получим <code>len</code> запросив <code>GL_INFO_LOG_LENGTH</code> для объекта шейдера: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let len = gl::get_shaderiv(id, gl::GL_INFO_LOG_LENGTH);
+
+// continue here
+<span class="boring">}
+</span></code></pre></pre>
+<p>При этом мы можем попросить OpenGL записать журнал информации о шейдере в значение нашей ошибки и наконец, мы можем вернуть ошибку : </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>return match gl::get_shader_info_log(id, len) {
+    Some(message) =&gt; Err(message),
+    None =&gt; Ok(id)
+};
+
+// continue here
+<span class="boring">}
+</span></code></pre></pre>
+<p>Финальный код функции <code>shader_from_source</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn shader_from_source(source: &amp;str, kind: gl::GLenum) -&gt; Result&lt;u32, String&gt; {
+    let id = gl::create_shader(kind);
+
+    gl::shader_source(id, source.as_bytes());
+    gl::compile_shader(id);
+
+    let success = gl::get_shaderiv(id, gl::GL_COMPILE_STATUS);
+
+    if success == 0 {
+        let len = gl::get_shaderiv(id, gl::GL_INFO_LOG_LENGTH);
+
+        return match gl::get_shader_info_log(id, len) {
+            Some(message) =&gt; Err(message),
+            None =&gt; Ok(id)
+        };
+    }
+
+    Ok(id)
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2><a class="header" href="#Программа" id="Программа">Программа</a></h2>
+<p>Программа связывания требует следующих вызовов OpenGL:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let program_id = gl::create_program();
+
+gl::attach_shader(program_id, vert_shader);
+gl::attach_shader(program_id, frag_shader);
+
+gl::link_program(program_id);
+<span class="boring">}
+</span></code></pre></pre>
+<p>По аналогии с компиляцмей шейдеров напишем функцию для программы связывания.
+Вместо <code>get_shaderiv</code>, мы испольуем <code>get_programiv</code>, instead of <code>get_shader_info_log</code> we use <code>get_program_info_log</code>.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn program_from_shaders(vert_shader: u32, frag_shader: u32) -&gt; Result&lt;u32, String&gt; {
+    let program_id = gl::create_program();
+
+    gl::attach_shader(program_id, vert_shader);
+    gl::attach_shader(program_id, frag_shader);
+
+    gl::link_program(program_id);
+
+    // error handling here
+    let success = gl::get_programiv(program_id, gl::GL_LINK_STATUS);
+
+    if success == 0 {
+        let len = gl::get_programiv(program_id, gl::GL_INFO_LOG_LENGTH);     
+
+        return match gl::get_program_info_log(program_id, len) {
+            Some(message) =&gt; Err(message),
+            None =&gt; Ok(program_id)
+        };
+    }
+
+    gl::detach_shader(program_id, vert_shader);
+    gl::detach_shader(program_id, frag_shader);
+
+    Ok(program_id)
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Одно маленькое уточнение: <code>gl::delete_shader</code> не удалит шейдер, если он все еще прикреплен к программе. Поэтому мы отключаем шейдер после его связывания.</p>
+<h2><a class="header" href="#Использование-наших-шейдеров-и-программ-связывания" id="Использование-наших-шейдеров-и-программ-связывания">Использование наших шейдеров и программ связывания</a></h2>
+<p>Для начала добавим код шейдеров в файл <code>main.rs</code>. Я добавил его перед функцией <code>shader_from_source</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub const VERT_SHADER: &amp;str = r&quot;
+    attribute vec3 Position;
+
+    void main()
+    {
+        gl_Position = vec4(Position, 1.0);
+    }
+&quot;;
+
+pub const FRAG_SHADER: &amp;str = r&quot;
+    precision mediump float;
+    void main()
+    {
+        gl_FragColor = vec4(1.0, 0.5, 0.2, 1.0);
+    }
+&quot;;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Прямо перед основным циклом, мы можем скомпилировать наши вершинные и шейдерные программы: </p>
+<p>(main.rs, before loop)</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let vertex_shader = match shader_from_source(VERT_SHADER, gl::GL_VERTEX_SHADER) {
+    Ok(id) =&gt; {
+        println!(&quot;Vertex Shader Compiled&quot;);
+        id
+    },
+    Err(err) =&gt; panic!(&quot;{}&quot;, err)
+};
+
+let fragment_shader = match shader_from_source(FRAG_SHADER, gl::GL_FRAGMENT_SHADER) {
+    Ok(id) =&gt; {
+        println!(&quot;Fragment Shader Compiled&quot;);
+        id
+    },
+    Err(err) =&gt; panic!(&quot;Error: {}&quot;, err)
+};
+
+// continue here
+<span class="boring">}
+</span></code></pre></pre>
+<p>Затем мы связываем наши шейдеры: </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match program_from_shaders(vertex_shader, fragment_shader) {
+    Ok(_) =&gt; println!(&quot;Program linked&quot;),
+    Err(err) =&gt; panic!(&quot;Error: {}&quot;, err)
+}
+
+// continue here
+<span class="boring">}
+</span></code></pre></pre>
+<p>Запустим программу на выполнение:</p>
+<pre><code class="language-txt">&gt; cargo run
+   Compiling lesson-02-opengl-context v0.1.0 (/home/opengles-tutorial)
+    Finished dev [unoptimized + debuginfo] target(s) in 7.27s
+     Running `/home/opengles-tutorial/target/debug/lesson-02-opengl-context`
+GL_RENDERER = GeForce GTX 1050/PCIe/SSE2
+GL_VERSION = OpenGL ES 1.1 NVIDIA 460.67
+GL_VENDOR = NVIDIA Corporation
+GL_EXTENSIONS = GL_EXT_debug_label GL_EXT_map_buffer_range GL_EXT_robustness ...
+
+Vertex Shader Compiled
+Fragment Shader Compiled
+Program linked
+</code></pre>
+<p>Однако мы пока ничего не увидим на экране, потому что мы еще не отправляем никаких команд рисования в OpenGL. Однако если вывод в терминале должен показать нам что шейдеры скомпилировались и программа слинкована.</p>
+<p>Мы исправим это <a href="04-triangle.html">в следующий раз</a>.</p>
+<p>Как всегда, <a href="https://github.com/angular-rust/opengles-tutorial/tree/main/lesson-03">код этой части главы на github</a>.</p>
 
                     </main>
 
